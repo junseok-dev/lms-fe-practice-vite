@@ -1,0 +1,585 @@
+.student-dashboard {
+  display: grid;
+  width: 1119px;
+  gap: 32px;
+}
+
+.dashboard-kpi-strip {
+  width: 1119px;
+  height: 140px;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.dashboard-kpi-strip__items {
+  display: grid;
+  grid-template-columns: repeat(4, 265px);
+  justify-content: space-between;
+  height: 138px;
+  padding: 24px 0;
+}
+
+.dashboard-kpi-item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  height: 90px;
+  padding-right: 24px;
+}
+
+.dashboard-kpi-item p,
+.dashboard-kpi-item small,
+.dashboard-panel__header span,
+.dashboard-row span,
+.dashboard-row p,
+.dashboard-section-title p,
+.change-request-card p,
+.change-request-card dt {
+  margin: 0;
+  color: #878c99;
+  font-size: 11px;
+}
+
+.dashboard-kpi-item p {
+  color: #5d6271;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dashboard-kpi-item div {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.dashboard-kpi-item strong {
+  color: #0a0a0a;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.dashboard-kpi-item div span {
+  color: #878c99;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dashboard-kpi-item small {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.dashboard-kpi-item small.is-positive {
+  color: #29b5b0;
+}
+
+.dashboard-kpi-item small.is-warning {
+  color: #d97706;
+}
+
+.dashboard-kpi-item small.is-neutral {
+  color: #878c99;
+}
+
+.dashboard-learning-section,
+.dashboard-notifications-section,
+.dashboard-projects-section {
+  display: grid;
+  grid-template-columns: 547px 548px;
+  gap: 24px;
+  width: 1119px;
+}
+
+.dashboard-learning-section {
+  height: 380px;
+}
+
+.dashboard-notifications-section {
+  height: 320px;
+}
+
+.dashboard-projects-section {
+  min-height: 257px;
+}
+
+.dashboard-panel {
+  min-width: 0;
+}
+
+.dashboard-panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  height: 40px;
+  padding-bottom: 16px;
+}
+
+.dashboard-panel__header div,
+.dashboard-section-title,
+.dashboard-section-title div,
+.trouble-list header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.dashboard-panel__header h2,
+.dashboard-section-title h2,
+.trouble-list h2 {
+  margin: 0;
+  color: #0a0a0a;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-panel__header a,
+.quiz-action a {
+  color: #363b47;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dashboard-panel__body {
+  display: grid;
+}
+
+.dashboard-row {
+  border-bottom: 1px solid #eef0f3;
+}
+
+.dashboard-row strong,
+.change-request-card strong {
+  color: #171922;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dashboard-row--todo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 64px;
+  padding: 16px 0;
+}
+
+.todo-check {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #e1e4ea;
+  border-radius: 4px;
+}
+
+.dashboard-row--todo div,
+.dashboard-row--quiz > div:first-child,
+.dashboard-row--project > div {
+  display: grid;
+  gap: 3px;
+}
+
+.dashboard-row--todo p,
+.dashboard-row--quiz p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-tag {
+  width: 24px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.mini-tag.is-warn {
+  background: #fef3c7;
+}
+
+.mini-tag.is-info {
+  background: #dbeafe;
+}
+
+.mini-tag.is-success {
+  background: #e6f7f6;
+}
+
+.mini-tag.is-plain {
+  background: #f8f9fb;
+}
+
+.dashboard-row--quiz,
+.dashboard-row--simple,
+.dashboard-row--project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-row--quiz {
+  height: 76px;
+  padding: 16px 0;
+}
+
+.quiz-action {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+}
+
+.quiz-action em {
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.quiz-action a {
+  color: #5c4fd9;
+  font-size: 11px;
+}
+
+.dashboard-attendance-section {
+  display: grid;
+  width: 1119px;
+  height: 420px;
+  gap: 20px;
+}
+
+.dashboard-section-title {
+  justify-content: space-between;
+  height: 30px;
+}
+
+.dashboard-section-title h2 {
+  font-size: 18px;
+}
+
+.dashboard-attendance-body {
+  display: grid;
+  grid-template-columns: 680px 407px;
+  gap: 32px;
+}
+
+.attendance-month-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #e1e4ea;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #171922;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.attendance-month-button span {
+  color: #878c99;
+  font-size: 9px;
+}
+
+.attendance-calendar {
+  display: grid;
+  gap: 8px;
+  height: 350px;
+}
+
+.attendance-weekdays,
+.attendance-month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 94px);
+  gap: 4px;
+}
+
+.attendance-weekdays {
+  padding-bottom: 4px;
+}
+
+.attendance-weekdays span {
+  display: grid;
+  width: 94px;
+  height: 18px;
+  place-items: center;
+  color: #878c99;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.attendance-day {
+  width: 94px;
+  height: 56px;
+  padding: 8px 10px;
+  border: 1px solid #eef0f3;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.attendance-day.is-present {
+  border-color: transparent;
+  background: #e6f7f6;
+}
+
+.attendance-day.is-late {
+  border-color: transparent;
+  background: #fef3c7;
+}
+
+.attendance-day.is-holiday {
+  border-color: transparent;
+  background: #f8f9fb;
+}
+
+.attendance-day.is-today {
+  border: 1.5px solid #29b5b0;
+  background: #e6f7f6;
+}
+
+.attendance-day strong {
+  color: #171922;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.attendance-day span {
+  display: block;
+  margin-top: 4px;
+  color: #29b5b0;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.attendance-day.is-late span {
+  color: #d97706;
+}
+
+.attendance-day.is-holiday span {
+  color: #b8bcc5;
+}
+
+.attendance-day.is-today strong {
+  color: #29b5b0;
+  font-weight: 700;
+}
+
+.attendance-day.is-today span {
+  color: #0a0a0a;
+}
+
+.attendance-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.attendance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #5d6271;
+  font-size: 11px;
+}
+
+.attendance-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.attendance-legend .is-present {
+  background: #29b5b0;
+}
+
+.attendance-legend .is-late {
+  background: #d97706;
+}
+
+.attendance-legend .is-absent {
+  background: #dc2626;
+}
+
+.attendance-legend .is-holiday {
+  background: #b8bcc5;
+}
+
+.attendance-summary {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  height: 350px;
+}
+
+.attendance-summary h3,
+.attendance-trend-title h3 {
+  margin: 0;
+  color: #363b47;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.attendance-numbers {
+  display: flex;
+  width: 407px;
+}
+
+.attendance-numbers div {
+  display: grid;
+  width: 81px;
+  height: 76px;
+  place-items: center;
+  gap: 6px;
+  padding: 12px 0;
+  border-right: 1px solid #eef0f3;
+}
+
+.attendance-numbers strong {
+  color: #111827;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.attendance-numbers span {
+  color: #878c99;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.attendance-numbers strong.is-present,
+.attendance-trend-title span {
+  color: #29b5b0;
+}
+
+.attendance-numbers strong.is-late {
+  color: #d97706;
+}
+
+.attendance-numbers strong.is-absent {
+  color: #dc2626;
+}
+
+.attendance-numbers strong.is-official {
+  color: #2563eb;
+}
+
+.attendance-trend-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.attendance-trend-title span {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.attendance-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  width: 407px;
+  height: 80px;
+}
+
+.chart-column {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 44px;
+}
+
+.chart-column span {
+  display: block;
+  width: 28px;
+  border-radius: 6px 6px 0 0;
+  background: #2563eb;
+}
+
+.chart-column em {
+  color: #878c99;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.dashboard-row--simple,
+.dashboard-row--project {
+  min-height: 58px;
+  padding: 12px 0;
+}
+
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-badge.is-ok {
+  background: #e8f7f7;
+  color: #29b5b0;
+}
+
+.status-badge.is-neutral {
+  background: #f0f2f7;
+  color: #5c667a;
+}
+
+.dashboard-side-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.trouble-list {
+  display: grid;
+}
+
+.trouble-list header {
+  height: 38px;
+  padding-bottom: 8px;
+}
+
+.trouble-list header span {
+  color: #878c99;
+  font-size: 11px;
+}
+
+.change-request-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: #f8f9fb;
+}
+
+.change-request-card div {
+  display: grid;
+  gap: 2px;
+}
+
+.change-request-card dl {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0;
+}
+
+.change-request-card dd {
+  margin: 0;
+  color: #b8bcc5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.change-request-card dd.is-warning {
+  color: #d97706;
+}
+
+.change-request-card dd.is-positive {
+  color: #29b5b0;
+}

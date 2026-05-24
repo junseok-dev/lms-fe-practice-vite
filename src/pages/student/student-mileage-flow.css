@@ -1,0 +1,149 @@
+/* 마일리지 상품 신청과 사용 내역 페이지의 카드/테이블 배치를 관리합니다. */
+.student-mileage-products-page,
+.student-mileage-history-page {
+  padding: 32px 72px;
+}
+
+.student-mileage-products-page {
+  display: grid;
+  gap: 24px;
+}
+
+.student-mileage-products-page__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-mileage-products-page__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.student-mileage-products-page__title h2 {
+  margin: 0;
+  color: #121726;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-mileage-products-page__title span {
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-mileage-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 9px 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.student-mileage-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.student-mileage-request-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 28px;
+  min-height: 290px;
+  padding: 20px;
+  border: 1px solid #e8ebed;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.student-mileage-request-card h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #121726;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-mileage-request-card__fields {
+  display: grid;
+  gap: 18px;
+}
+
+.student-mileage-request-card__submit {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.student-mileage-history-page {
+  display: grid;
+  gap: 24px;
+}
+
+.student-mileage-history-table {
+  overflow: hidden;
+  border: 1px solid #e8ebed;
+  border-radius: 14px;
+}
+
+.student-mileage-history-table__row {
+  display: grid;
+  grid-template-columns: 120px 110px minmax(240px, 1fr) 130px 110px 1fr;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 20px;
+  border-top: 1px solid #f0f2f7;
+  color: #121726;
+  font-size: 12px;
+}
+
+.student-mileage-history-table__row:first-child {
+  border-top: 0;
+}
+
+.student-mileage-history-table__row.is-head {
+  min-height: 51px;
+  color: #5c667a;
+  font-weight: 600;
+}
+
+.student-mileage-history-table__title {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.student-mileage-history-table__mileage {
+  color: #5c4fd9;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.student-mileage-history-table__mileage.is-positive {
+  color: #29b5b0;
+}
+
+@media (max-width: 900px) {
+  .student-mileage-products-page,
+  .student-mileage-history-page {
+    padding: 28px 24px;
+  }
+
+  .student-mileage-product-grid,
+  .student-mileage-request-card {
+    grid-template-columns: 1fr;
+  }
+
+  .student-mileage-history-table {
+    overflow-x: auto;
+  }
+
+  .student-mileage-history-table__row {
+    min-width: 980px;
+  }
+}

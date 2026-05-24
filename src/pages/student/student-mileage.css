@@ -1,0 +1,227 @@
+/* 수강생 내 마일리지 전용 스타일입니다.
+   Figma 공통 KPI/Button/Status Badge를 쓰되, 패널과 목록 배치는 이 화면 안에서 관리합니다. */
+.student-mileage {
+  display: grid;
+  gap: 24px;
+  padding: 32px 72px;
+  color: #121726;
+}
+
+.student-mileage h2,
+.student-mileage h3,
+.student-mileage p {
+  margin: 0;
+}
+
+.student-mileage__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 252px);
+  gap: 16px;
+}
+
+.student-mileage-kpi {
+  display: grid;
+  gap: 7px;
+  width: 252px;
+  height: 118px;
+  padding: 18px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.student-mileage-kpi p {
+  color: #5c667a;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+.student-mileage-kpi strong {
+  color: #29b5b0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 35px;
+}
+
+.student-mileage-kpi i {
+  width: 100%;
+  height: 1px;
+  background: #f0f2f7;
+}
+
+.student-mileage-kpi span {
+  color: #9ea8b8;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.student-mileage__overview {
+  display: grid;
+  grid-template-columns: 680px 356px;
+  gap: 20px;
+}
+
+.student-mileage-panel {
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.student-mileage-panel h2 {
+  color: #121726;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 23px;
+}
+
+.student-mileage-panel--history {
+  min-height: 410px;
+  padding: 20px;
+}
+
+.student-mileage-panel--history > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -10px 0 12px;
+}
+
+.student-mileage-history__item {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f0f2f7;
+}
+
+.student-mileage-history__item h3 {
+  color: #121726;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+.student-mileage-history__item p {
+  margin-top: 4px;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.student-mileage-panel--products {
+  min-height: 410px;
+  padding: 20px;
+}
+
+.student-mileage-products {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.student-mileage-product {
+  display: flex;
+  width: 316px;
+  height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px 15px 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.student-mileage-product h3 {
+  color: #121726;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.student-mileage-product p {
+  margin-top: 5px;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.student-mileage-product .figma-button {
+  min-width: 74px;
+}
+
+.student-mileage-panel--limits {
+  width: 1056px;
+  height: 220px;
+  padding: 20px;
+}
+
+.student-mileage-limits {
+  display: grid;
+  gap: 25px;
+  margin-top: 22px;
+}
+
+.student-mileage-limit {
+  display: grid;
+  grid-template-columns: 100px 700px 150px;
+  align-items: center;
+  gap: 20px;
+}
+
+.student-mileage-limit span {
+  color: #121726;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+.student-mileage-limit div {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #eff1f4;
+}
+
+.student-mileage-limit div i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #29b5b0;
+}
+
+.student-mileage-limit strong {
+  color: #5c667a;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media (max-width: 900px) {
+  .student-mileage {
+    padding: 24px;
+  }
+
+  .student-mileage__kpis,
+  .student-mileage__overview {
+    grid-template-columns: 1fr;
+  }
+
+  .student-mileage-kpi,
+  .student-mileage-panel--limits,
+  .student-mileage-product {
+    width: 100%;
+  }
+
+  .student-mileage-panel--limits {
+    height: auto;
+  }
+
+  .student-mileage-limit {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+
+  .student-mileage-limit strong {
+    grid-column: 2;
+  }
+}

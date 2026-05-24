@@ -1,0 +1,272 @@
+.login-page {
+  position: relative;
+  width: 1440px;
+  min-height: 1240px;
+  overflow: hidden;
+  background: #ffffff;
+  color: #1f2133;
+}
+
+.login-page::before,
+.login-page::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(230, 247, 246, 0.5);
+}
+
+.login-page::before {
+  left: -180px;
+  top: 920px;
+  width: 380px;
+  height: 380px;
+}
+
+.login-page::after {
+  left: 1080px;
+  top: -260px;
+  width: 520px;
+  height: 520px;
+}
+
+.login-logo {
+  position: absolute;
+  left: 80px;
+  top: 60px;
+  width: 173px;
+}
+
+.login-logo strong {
+  color: #5c4fd9;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.login-logo strong span {
+  color: #29b5b0;
+}
+
+.login-logo p {
+  margin: 0;
+  color: #666680;
+  font-size: 12px;
+}
+
+.login-language {
+  position: absolute;
+  left: 1280px;
+  top: 70px;
+  width: 90px;
+  border: 0;
+  background: transparent;
+  color: #33334d;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.login-copy {
+  position: absolute;
+  left: 80px;
+  top: 193px;
+}
+
+.login-copy h1 {
+  width: 520px;
+  margin: 0;
+  color: #1f2133;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.login-copy h1 span {
+  color: #5c4fd9;
+}
+
+.login-copy p {
+  width: 260px;
+  margin: 30px 0 0;
+  color: #666e80;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.login-feature-list {
+  position: absolute;
+  left: 80px;
+  top: 479px;
+  display: flex;
+  align-items: center;
+  gap: 115px;
+}
+
+.login-feature-card {
+  position: relative;
+  width: 110px;
+  height: 132px;
+  text-align: center;
+}
+
+.login-feature-card__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 32px;
+}
+
+.login-feature-card__icon.is-teal {
+  background: rgba(46, 189, 176, 0.18);
+}
+
+.login-feature-card__icon.is-purple {
+  background: rgba(140, 115, 235, 0.18);
+}
+
+.login-feature-card__icon.is-blue {
+  background: rgba(77, 140, 245, 0.18);
+}
+
+.login-feature-card h2 {
+  margin: 14px 0 0;
+  color: #1f2133;
+  font-size: 14px;
+}
+
+.login-feature-card p {
+  margin: 4px 0 0;
+  color: #737a8c;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.login-card {
+  position: absolute;
+  left: 820px;
+  top: 110px;
+  width: 540px;
+  height: 800px;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(26, 38, 64, 0.08);
+}
+
+.login-card__icon {
+  position: absolute;
+  left: 220px;
+  top: 60px;
+  display: grid;
+  width: 100px;
+  height: 100px;
+  place-items: center;
+  border-radius: 50px;
+  background: #d9f2f0;
+  font-size: 44px;
+}
+
+.login-card h2 {
+  position: absolute;
+  top: 180px;
+  width: 540px;
+  margin: 0;
+  color: #29b5b0;
+  font-size: 32px;
+  text-align: center;
+}
+
+.login-card > p {
+  position: absolute;
+  top: 230px;
+  width: 540px;
+  margin: 0;
+  color: #808c9e;
+  font-size: 15px;
+  text-align: center;
+}
+
+.demo-hint {
+  position: absolute;
+  left: 820px;
+  top: 935px;
+  display: grid;
+  gap: 12px;
+  width: 540px;
+  padding: 20px 24px;
+  border: 1px solid #e8ebed;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.demo-hint header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-hint header span {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background: #29b5b0;
+}
+
+.demo-hint strong {
+  color: #121726;
+  font-size: 13px;
+}
+
+.demo-hint__grid {
+  display: grid;
+  gap: 6px;
+}
+
+.demo-hint__row {
+  display: grid;
+  grid-template-columns: 56px 1fr 90px 110px;
+  align-items: center;
+  gap: 10px;
+  height: 22px;
+}
+
+.demo-hint__row span {
+  display: grid;
+  height: 20px;
+  place-items: center;
+  border-radius: 6px;
+  background: #e8f7f7;
+  color: #121726;
+  font-size: 10px;
+}
+
+.demo-hint__row code,
+.demo-hint__row em,
+.demo-hint > p {
+  color: #5c6978;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.demo-hint > p {
+  margin: 0;
+}
+
+.login-page__footer {
+  position: absolute;
+  left: 222px;
+  top: 1176px;
+  width: 276px;
+  color: #667385;
+  text-align: center;
+}
+
+.login-page__footer p {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.login-page__footer small {
+  color: #8c99a8;
+  font-size: 12px;
+}

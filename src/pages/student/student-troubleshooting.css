@@ -1,0 +1,124 @@
+/* 수강생 트러블슈팅 사례 목록 전용 스타일입니다.
+   사례 카드는 아직 Figma 공통으로 확인되지 않았으므로 페이지 안에서만 관리합니다. */
+.student-troubleshooting {
+  display: grid;
+  gap: 24px;
+  padding: 32px 72px;
+  color: #121726;
+}
+
+.student-troubleshooting h2,
+.student-troubleshooting h3,
+.student-troubleshooting p {
+  margin: 0;
+}
+
+.student-troubleshooting__toolbar,
+.student-troubleshooting__toolbar div,
+.student-troubleshooting-card header,
+.student-troubleshooting-card header div,
+.student-troubleshooting-card__meta,
+.student-troubleshooting-card__sections {
+  display: flex;
+  align-items: center;
+}
+
+.student-troubleshooting__toolbar {
+  justify-content: space-between;
+}
+
+.student-troubleshooting__toolbar div,
+.student-troubleshooting-card header div {
+  gap: 8px;
+}
+
+.student-troubleshooting__toolbar h2 {
+  color: #121726;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.student-troubleshooting__toolbar span {
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-troubleshooting__list {
+  display: grid;
+  gap: 12px;
+}
+
+.student-troubleshooting-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid #e8eaed;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.student-troubleshooting-card header {
+  justify-content: space-between;
+}
+
+.student-troubleshooting-card h3 {
+  color: #121726;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.student-troubleshooting-card__meta {
+  gap: 10px;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.student-troubleshooting-card__meta i {
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: #9ea8b8;
+}
+
+.student-troubleshooting-card__situation {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f8f9fb;
+}
+
+.student-troubleshooting-card__situation span {
+  color: #9ea8b8;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.009em;
+}
+
+.student-troubleshooting-card__situation p {
+  color: #5c667a;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.student-troubleshooting-card__sections {
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .student-troubleshooting {
+    padding: 24px;
+  }
+
+  .student-troubleshooting__toolbar,
+  .student-troubleshooting-card header,
+  .student-troubleshooting-card__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

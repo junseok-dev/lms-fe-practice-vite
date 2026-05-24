@@ -1,0 +1,37 @@
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 56px;
+}
+
+.dashboard-main {
+  min-width: 0;
+  border: 1px solid #dfe4ed;
+  border-left: 0;
+  background: #ffffff;
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+
+.auth-layout {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 24px;
+}
+
+@media (max-width: 760px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-main {
+    border-left: 1px solid #dfe4ed;
+  }
+}

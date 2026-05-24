@@ -1,0 +1,198 @@
+/* PLAY 타자 게임 화면의 KPI, 입력 영역, 제시문 카드 배치를 관리합니다. */
+.student-play-typing-page {
+  display: grid;
+  gap: 30px;
+  padding: 32px 72px;
+}
+
+.student-play-typing-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.student-play-typing-kpi {
+  display: grid;
+  gap: 8px;
+  min-height: 118px;
+  padding: 18px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.student-play-typing-kpi span {
+  color: #5c667a;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-play-typing-kpi strong {
+  color: #29b5b0;
+  font-size: 24px;
+}
+
+.student-play-typing-kpi small {
+  padding-top: 10px;
+  border-top: 1px solid #f0f2f7;
+  color: #9ea8b8;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.student-play-typing-main {
+  display: grid;
+  grid-template-columns: 720px 312px;
+  gap: 24px;
+}
+
+.student-play-typing-card,
+.student-play-typing-info,
+.student-play-typing-prompts {
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.student-play-typing-card {
+  display: grid;
+  gap: 24px;
+  min-height: 520px;
+  padding: 24px;
+}
+
+.student-play-typing-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-play-typing-section-title h2,
+.student-play-typing-prompts h2,
+.student-play-typing-prompt-option h3 {
+  margin: 0;
+  color: #121726;
+}
+
+.student-play-typing-section-title h2,
+.student-play-typing-prompts h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-play-typing-prompt {
+  display: grid;
+  min-height: 150px;
+  align-items: center;
+  padding: 22px;
+  border: 1px solid #f0f2f5;
+  border-radius: 8px;
+  color: #121726;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.student-play-typing-area {
+  min-height: 112px;
+  padding: 20px 18px;
+  border: 1.5px solid #e8ebed;
+  border-radius: 8px;
+  color: #9ea8b8;
+  font-size: 14px;
+}
+
+.student-play-typing-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-play-typing-actions .figma-button:last-child {
+  margin-left: auto;
+}
+
+.student-play-typing-info {
+  display: grid;
+  align-content: start;
+  min-height: 520px;
+  padding: 20px;
+}
+
+.student-play-typing-info h2 {
+  margin: 0 0 20px;
+  color: #121726;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-play-typing-info__row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 18px;
+  padding: 22px 0;
+  border-top: 1px solid #f0f2f7;
+  color: #121726;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.student-play-typing-info__row span:first-child {
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.student-play-typing-info .figma-button {
+  margin-top: auto;
+  width: 100%;
+}
+
+.student-play-typing-prompts {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.student-play-typing-prompts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.student-play-typing-prompt-option {
+  display: grid;
+  min-height: 150px;
+  align-content: start;
+  gap: 8px;
+  padding: 18px 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+}
+
+.student-play-typing-prompt-option h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.student-play-typing-prompt-option p {
+  margin: 0;
+  color: #9ea8b8;
+  font-size: 12px;
+}
+
+.student-play-typing-prompt-option .figma-button {
+  justify-self: end;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .student-play-typing-page {
+    padding: 28px 24px;
+  }
+
+  .student-play-typing-kpis,
+  .student-play-typing-main,
+  .student-play-typing-prompts__grid {
+    grid-template-columns: 1fr;
+  }
+}

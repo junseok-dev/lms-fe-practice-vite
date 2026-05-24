@@ -1,0 +1,114 @@
+.app-shell {
+  min-height: 100svh;
+  background: #f6f8fb;
+  color: #171a24;
+}
+
+.app-intro {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 56px 24px 32px;
+}
+
+.app-kicker {
+  margin: 0 0 10px;
+  color: #4d2ecc;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.app-intro h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.app-description {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: #575e6e;
+  line-height: 1.7;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.route-card {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid #dfe4ed;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(13, 18, 36, 0.04);
+}
+
+.route-card span {
+  color: #4d2ecc;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.route-card h2 {
+  margin: 10px 0 8px;
+  font-size: 18px;
+}
+
+.route-card p {
+  min-height: 72px;
+  margin: 0;
+  color: #575e6e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.route-card code {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #f0f3f8;
+  color: #303647;
+  font-size: 12px;
+}
+
+.login-page {
+  display: grid;
+  gap: 16px;
+}
+
+.login-form {
+  display: grid;
+  max-width: 420px;
+  gap: 14px;
+}
+
+@media (max-width: 960px) {
+  .route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .app-intro {
+    padding-top: 36px;
+  }
+
+  .app-intro h1 {
+    font-size: 30px;
+  }
+
+  .route-grid {
+    grid-template-columns: 1fr;
+  }
+}

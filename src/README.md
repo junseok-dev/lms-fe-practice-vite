@@ -1,126 +1,94 @@
-# Vite React src 폴더 설명
+# src 폴더 안내
 
-이 폴더는 브라우저에 보이는 React 화면 코드를 넣는 곳입니다.
-지금 프로젝트는 Vite로 만든 기본 React 프로젝트라서 구조가 아주 단순합니다.
-
-## 현재 구조
-
-```text
-src/
-  assets/      이미지, SVG 같은 정적 파일
-  App.tsx      실제 첫 화면 컴포넌트
-  App.css      App.tsx 화면 전용 스타일
-  index.css    앱 전체에 적용되는 공통 스타일
-  main.tsx     React 앱을 브라우저에 붙이는 시작 파일
-```
+이 폴더는 브라우저에서 실제로 렌더링되는 React 코드가 들어가는 곳입니다.
 
 ## 실행 흐름
-
-브라우저는 먼저 프로젝트 루트의 `index.html`을 엽니다.
-그 안에는 아래처럼 React 앱이 들어갈 빈 자리인 `root`가 있습니다.
-
-```html
-<div id="root"></div>
-```
-
-그 다음 Vite가 `src/main.tsx`를 실행합니다.
-`main.tsx`는 `root` 자리를 찾아서 React의 `<App />` 컴포넌트를 넣습니다.
-
-흐름을 간단히 쓰면 이렇습니다.
 
 ```text
 index.html
   -> src/main.tsx
-    -> src/App.tsx
-      -> src/App.css, src/index.css
+    -> src/app/App.tsx
+      -> app/router.tsx
+        -> layouts, pages, features, components
 ```
 
-## 파일별 역할
+## 폴더 기준
 
-### main.tsx
+`pages`는 URL과 직접 연결되는 화면입니다.
 
-React 앱의 진입점입니다.
-보통 처음에는 많이 수정하지 않습니다.
-나중에 라우터, 전역 상태, 공통 Provider를 연결할 때 이 파일을 다시 보게 됩니다.
+`features`는 로그인, 수강생, 멘토, 강사, 운영자처럼 업무 단위로 묶는 코드입니다.
 
-### App.tsx
+`components/figma/common`은 Figma에서 `공통 - ...` 컴포넌트로 확인된 UI만 둡니다.
 
-현재 화면의 본체입니다.
-처음 연습할 때는 대부분 이 파일을 수정하면서 React 문법을 익힙니다.
+`components/candidates`는 반복 가능성은 있지만 아직 Figma 공통으로 확정하지 않은 UI 후보를 문서로 관리합니다.
 
-예를 들어:
+`layouts`는 로그인 후 수강생 화면처럼 여러 페이지가 공유하는 큰 화면 틀입니다.
 
-- 글자 바꾸기
-- 버튼 추가하기
-- `useState`로 값 바꾸기
-- 컴포넌트 분리하기
+`mocks`는 API가 아직 없을 때 화면을 먼저 만들기 위한 가짜 데이터입니다.
 
-### index.css
+`types`, `constants`는 여러 폴더에서 함께 쓰는 타입과 상수를 둡니다.
 
-전체 앱에 적용되는 공통 CSS입니다.
-`body`, `#root`, 기본 글꼴, 전체 배경색 같은 큰 스타일을 여기에 둡니다.
-
-### App.css
-
-`App.tsx` 화면에서 쓰는 CSS입니다.
-지금은 Vite 기본 화면의 버튼, 히어로 이미지, 다음 단계 영역 스타일이 들어 있습니다.
-
-### assets
-
-이미지 파일을 넣는 폴더입니다.
-React 코드에서 이미지를 import해서 사용할 수 있습니다.
-
-```tsx
-import viteLogo from './assets/vite.svg'
-```
-
-## 앞으로 폴더를 늘린다면
-
-처음부터 너무 많이 만들 필요는 없습니다.
-화면이 커지기 시작하면 아래처럼 늘리면 됩니다.
+## 현재 Figma 공통 컴포넌트
 
 ```text
-src/
-  app/          앱 설정, 라우터, Provider
-  components/   여러 화면에서 재사용하는 UI
-  features/     로그인, 학생 대시보드처럼 기능 단위 코드
-  lib/          공통 함수, 상수
-  styles/       공통 스타일
-  types/        공통 TypeScript 타입
+공통 - Header / Base                    -> FigmaHeader
+공통 - Sidebar / Base                   -> FigmaSidebar
+공통 - KPI Card / Component             -> FigmaKpiCard
+공통 - Tabs Bar / Base                  -> FigmaTabsBar
+공통 - Button / Variants                -> FigmaButton
+공통 - Input Field / Variants           -> FigmaInputField
+공통 - Textarea / Variants              -> FigmaTextarea
+공통 - Chip / Variants                  -> FigmaChip
+공통 - Status Badge / Variants          -> FigmaStatusBadge
+공통 - Notice Banner / Variants         -> FigmaNoticeBanner
+공통 - Marketplace Product Card         -> FigmaMarketplaceProductCard
+공통 - Quiz Table Row / Variants        -> FigmaQuizTableRow
+공통 - Toast / Variants                 -> FigmaToast
 ```
 
-예를 들어 로그인 화면을 만든다면:
+## 수강생 1차 추가 라우트
 
 ```text
-src/
-  features/
-    auth/
-      LoginPage.tsx
-      LoginForm.tsx
+/student/course/assignments
+/student/course/assignments/:assignmentId
+/student/attendance/form
+/student/mileage/products
+/student/mileage/history
+/student/play/typing
 ```
 
-버튼을 여러 곳에서 쓰게 된다면:
+## 수강생 누락 화면 추가 라우트
 
 ```text
-src/
-  components/
-    Button.tsx
+/student/records/new/:recordType
+/student/records/blog/:recordId
+/student/records/blog/:recordId/edit
+/student/records?modal=delete-blog
+/student/records?toast=deleted
+/student/records?toast=blog-updated
+/student/course/materials#share
+/student/course/assignments/:assignmentId?toast=submitted
+/student/course/assignments/:assignmentId#confirm-resubmit
+/student/projects/new
+/student/projects/new?step=2
+/student/projects/new?step=3
+/student/projects/new?step=4
+/student/projects/:projectId
+/student/projects/:projectId?tab=board
+/student/projects/:projectId?tab=calendar
+/student/projects/:projectId?tab=meetings
+/student/projects/:projectId?tab=docs
+/student/projects/:projectId?tab=issues
+/student/projects/:projectId?tab=team
+/student/projects/:projectId?tab=outcomes
+/student/projects/:projectId?tab=peer-evaluation
+/student/projects/:projectId?tab=certification
+/student/projects/:projectId/change-requests/new
+/student/troubleshooting/new
+/student/troubleshooting/:id/change-requests/new
+/student/peer-evaluations
+/student/peer-tag
+/student/peer-reputation
 ```
 
-## 로컬 개발 명령어
-
-CMD에서 프로젝트 폴더로 이동한 뒤 실행합니다.
-
-```cmd
-cd C:\Workspaces\lms-fe-practice-vite
-npm run dev
-```
-
-터미널에 나온 주소를 브라우저에서 열면 됩니다.
-보통 아래 주소입니다.
-
-```text
-http://localhost:5173/
-```
-
-개발 서버를 켜둔 상태에서 `App.tsx`를 수정하고 저장하면 브라우저가 바로 갱신됩니다.
+기수 게시판은 없어진 페이지로 합의했기 때문에 사이드바와 라우터에 넣지 않습니다.

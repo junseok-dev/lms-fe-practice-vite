@@ -1,0 +1,70 @@
+.student-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1200px);
+  min-height: 100svh;
+  background: #ffffff;
+}
+
+.student-layout__main {
+  min-width: 0;
+  border-left: 1px solid #eef0f3;
+  background: #ffffff;
+}
+
+.student-layout__content {
+  width: 1200px;
+  min-height: calc(100svh - 96px);
+  padding: 40px 48px;
+  background: #ffffff;
+}
+
+.student-layout__content--profile {
+  padding: 32px 40px 0;
+}
+
+.student-layout__content--course {
+  padding: 0 40px;
+}
+
+.student-layout__content--evidence {
+  padding: 0 40px;
+}
+
+.student-layout__content--projects {
+  padding: 0;
+}
+
+.student-layout__content--troubleshooting {
+  padding: 0;
+}
+
+.student-layout__content--peer-review {
+  padding: 0;
+}
+
+.student-layout__content--mileage {
+  padding: 0;
+}
+
+.student-layout__content--play {
+  padding: 0;
+}
+
+.student-layout__content--figma-workflow {
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .student-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .student-layout__main {
+    border-left: 0;
+  }
+
+  .student-layout__content {
+    width: 100%;
+    padding: 28px 24px;
+  }
+}

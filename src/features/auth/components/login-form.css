@@ -1,0 +1,161 @@
+.login-form {
+  position: absolute;
+  inset: 0;
+}
+
+.login-input {
+  position: absolute;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 440px;
+  height: 56px;
+  padding: 0 14px;
+  border: 1px solid #e8ebed;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.login-input--id {
+  top: 301px;
+}
+
+.login-input--password {
+  top: 371px;
+}
+
+.login-input span {
+  width: 18px;
+  color: #111827;
+  font-size: 15px;
+}
+
+.login-input input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #111827;
+  font: inherit;
+  font-size: 15px;
+}
+
+.login-input input::placeholder {
+  color: #9ca3b0;
+}
+
+.login-error-banner {
+  position: absolute;
+  left: 50px;
+  top: 441px;
+  display: flex;
+  align-items: center;
+  width: 440px;
+  min-height: 56px;
+  margin: 0;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: #fff1f2;
+  color: #be123c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-form__meta {
+  position: absolute;
+  left: 50px;
+  top: 511px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 440px;
+  color: #4d576b;
+  font-size: 14px;
+}
+
+.login-form__meta label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-form__meta a {
+  color: #5c4fd9;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-checkbox {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #c7d1e0;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.login-submit {
+  position: absolute;
+  left: 50px;
+  top: 559px;
+  width: 440px;
+  height: 56px;
+  border: 0;
+  border-radius: 12px;
+  background: #29b5b0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.login-help-card {
+  position: absolute;
+  left: 50px;
+  top: 650px;
+  width: 440px;
+  height: 140px;
+  padding: 24px 24px 24px 96px;
+  border: 1px solid #e0f0f0;
+  border-radius: 16px;
+  background: #f7fcfc;
+}
+
+.login-help-card__icon {
+  position: absolute;
+  left: 24px;
+  top: 36px;
+  font-size: 36px;
+}
+
+.login-help-card strong {
+  display: block;
+  color: #1f2133;
+  font-size: 15px;
+}
+
+.login-help-card p {
+  margin: 8px 0 14px;
+  color: #808c9e;
+  font-size: 13px;
+}
+
+.login-help-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 38px;
+  border: 1px solid #29b5b0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #29b5b0;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}

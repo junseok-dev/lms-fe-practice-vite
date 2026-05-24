@@ -1,0 +1,153 @@
+/* 수강생 프로젝트 목록 전용 스타일입니다.
+   프로젝트 카드 자체는 아직 Figma 공통으로 확인되지 않았으므로 페이지 안에서만 관리합니다. */
+.student-projects {
+  display: grid;
+  gap: 24px;
+  padding: 32px 72px;
+  color: #121726;
+}
+
+.student-projects h2,
+.student-projects h3,
+.student-projects p {
+  margin: 0;
+}
+
+.student-projects__toolbar,
+.student-projects__toolbar div,
+.student-project-card header,
+.student-project-card header div,
+.student-project-card__meta,
+.student-project-card__stacks,
+.student-project-card__contribution {
+  display: flex;
+  align-items: center;
+}
+
+.student-projects__toolbar {
+  justify-content: space-between;
+}
+
+.student-projects__toolbar div,
+.student-project-card header div {
+  gap: 8px;
+}
+
+.student-projects__toolbar h2 {
+  color: #121726;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.student-projects__toolbar span {
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-projects__list {
+  display: grid;
+  gap: 12px;
+}
+
+.student-project-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid #e8eaed;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.student-project-card header {
+  justify-content: space-between;
+}
+
+.student-project-card h3 {
+  color: #121726;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.student-project-card__meta {
+  gap: 10px;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.student-project-card__meta span:first-child {
+  color: #5c667a;
+  font-weight: 500;
+}
+
+.student-project-card__meta i {
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: #9ea8b8;
+}
+
+.student-project-card__stacks {
+  gap: 6px;
+}
+
+.student-project-card__stacks span {
+  display: inline-flex;
+  min-height: 21px;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #f5f7fc;
+  color: #5c667a;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0.012em;
+}
+
+.student-project-card__contribution {
+  gap: 12px;
+}
+
+.student-project-card__contribution > span {
+  color: #5c667a;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-project-card__contribution div {
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #eef0f3;
+}
+
+.student-project-card__contribution div span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #29b5b0;
+}
+
+.student-project-card__contribution strong {
+  color: #121726;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .student-projects {
+    padding: 24px;
+  }
+
+  .student-projects__toolbar,
+  .student-project-card header,
+  .student-project-card__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
