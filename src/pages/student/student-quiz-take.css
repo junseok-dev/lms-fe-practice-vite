@@ -13,6 +13,9 @@
 }
 
 .quiz-take-top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -355,6 +358,9 @@
 }
 
 .quiz-take-bottom {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;

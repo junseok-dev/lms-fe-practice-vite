@@ -1,11 +1,12 @@
-// 앱 전체에서 사용하는 경로 상수입니다.
-// 문자열 경로를 여러 파일에 직접 쓰지 않도록 이곳에서 먼저 관리합니다.
+// 전체 앱에서 사용하는 경로 상수입니다.
+// 문자열 경로를 여러 파일에 직접 쓰지 않도록 한곳에서 관리합니다.
 export const ROUTES = {
   login: '/login',
   passwordReset: '/login/password-reset',
   authRoute: '/auth/route',
   sessionExpired: '/session-expired',
   forbidden: '/403',
+  publicCertificateVerify: '/verify/:publicToken',
   studentDashboard: '/student/dashboard',
   studentCourse: '/student/course',
   studentCourseMaterials: '/student/course/materials',

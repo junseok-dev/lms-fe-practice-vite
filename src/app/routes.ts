@@ -5,8 +5,8 @@ export type StudentNavItem = {
   path: string
 }
 
-// Figma의 수강생 Sidebar에 보이는 메뉴 순서입니다.
-// 기수 게시판은 없어진 페이지로 합의했기 때문에 코드 라우터와 메뉴에서 제외합니다.
+// Figma 수강생 Sidebar에서 사용하는 상위 메뉴 순서입니다.
+// 기수 게시판은 현재 구현 범위에서 제외된 페이지라 라우팅 메뉴에 넣지 않습니다.
 export const studentNavItems: StudentNavItem[] = [
   {
     label: '대시보드',

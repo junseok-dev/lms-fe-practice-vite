@@ -1,56 +1,150 @@
 import { Link } from 'react-router-dom'
-import { FigmaButton, FigmaNoticeBanner, FigmaTextarea } from '../../components/figma/common'
+import { FigmaButton, FigmaChip, FigmaNoticeBanner, FigmaTextarea } from '../../components/figma/common'
 import { ROUTES } from '../../constants/routes'
 import './student-missing-pages.css'
 
-const scoreRows = [
-  ['기술 문제해결', 86],
-  ['책임감', 92],
-  ['소통', 88],
-  ['성장 태도', 90],
-  ['피드백', 84],
+const peerAvatars = [
+  { initial: '이', color: 'teal', selected: true },
+  { initial: '박', color: 'orange', selected: false },
+  { initial: '최', color: 'blue', selected: false },
+  { initial: '김', color: 'purple', selected: false },
+  { initial: '정', color: 'red', selected: false },
+  { initial: '한', color: 'teal', selected: false },
 ] as const
 
-// Figma frame: "수강생 / PeerReputation 5축 평가".
-// 5가지 축으로 동료의 협업 평판을 평가하는 화면입니다.
+const reputationAxes = [
+  {
+    title: '기술',
+    description: '문제 해결과 구현 역량',
+    score: 5,
+    comment: 'MSA 구조 설계에서 도메인 분리를 명확하게 잡았고, Kafka 컨슈머 이슈도 멱등성 키로 깔끔하게 해결했습니다.',
+  },
+  {
+    title: '책임감',
+    description: '맡은 일을 끝까지 완수하는 태도',
+    score: 4,
+    comment: '',
+  },
+  {
+    title: '소통',
+    description: '명확하고 협조적인 커뮤니케이션',
+    score: 5,
+    comment: '회의에서 결정 사항을 잘 정리해 공유했고, 코드 리뷰 피드백이 구체적이라 팀에 도움이 됐습니다.',
+  },
+  {
+    title: '성장',
+    description: '학습 속도와 꾸준한 개선 노력',
+    score: 4,
+    comment: '',
+  },
+  {
+    title: '팀워크',
+    description: '팀에 기여하고 협력하는 태도',
+    score: 5,
+    comment: '',
+  },
+] as const
+
+const recommendations = ['적극 추천', '추천', '보류'] as const
+
+function StarRating({ score }: { score: number }) {
+  return (
+    <div className="student-peer-reputation-stars" aria-label={`${score}.0점`}>
+      <span aria-hidden="true" className="student-peer-reputation-stars__icons">
+        {'★'.repeat(score)}
+        {'☆'.repeat(5 - score)}
+      </span>
+      <strong>{score}.0</strong>
+    </div>
+  )
+}
+
+// Figma frame: "수강생 — PeerReputation 5축 평가 (/student/peer-reputation)"
+// 동기수 동료의 5축 협업 평판과 추천도를 익명으로 제출하는 화면입니다.
 export function StudentPeerReputationPage() {
   return (
-    <section className="student-workflow-page">
-      <FigmaNoticeBanner title="5축 평가는 익명으로 집계됩니다">
-        평가자는 공개되지 않고, 동일 기수 안에서만 평가할 수 있습니다.
+    <section className="student-workflow-page student-peer-reputation-page">
+      <FigmaNoticeBanner title="같은 기수 동료만 평가할 수 있습니다">
+        본인은 평가 대상이 아니며, 같은 기간 동료 재제출 시 마지막 제출 내용으로 덮어쓰기됩니다.
       </FigmaNoticeBanner>
 
-      <header className="student-workflow-head">
-        <div>
-          <h1>PeerReputation 5축 평가</h1>
-          <p>기술, 책임감, 소통, 성장 태도, 피드백 기준으로 동료의 작업 역량을 평가합니다.</p>
-        </div>
-      </header>
-
-      <section className="student-workflow-panel">
-        <h2>김하늘님 평가</h2>
-        <div className="student-peer-score-grid">
-          {scoreRows.map(([label, score]) => (
-            <div className="student-peer-score-row" key={label}>
-              <strong>{label}</strong>
-              <span>
-                <span style={{ width: `${score}%` }} />
-              </span>
-              <em>{score}</em>
+      <section className="student-peer-reputation-card">
+        <h2>평가 대상</h2>
+        <div className="student-peer-reputation-target-row">
+          <div className="student-peer-reputation-target">
+            <span className="student-peer-reputation-avatar student-peer-reputation-avatar--teal">이</span>
+            <div>
+              <strong>이서연</strong>
+              <span>백엔드 부트캠프 · 3기</span>
             </div>
+          </div>
+          <div className="student-peer-reputation-picker">
+            <span>다른 동료 선택</span>
+            <div>
+              {peerAvatars.map((avatar) => (
+                <button
+                  className={`student-peer-reputation-mini-avatar student-peer-reputation-avatar--${avatar.color} ${
+                    avatar.selected ? 'is-selected' : ''
+                  }`}
+                  key={avatar.initial}
+                  type="button"
+                >
+                  {avatar.initial}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="student-peer-reputation-card student-peer-reputation-rating-card">
+        <div className="student-peer-reputation-card-head">
+          <h2>5축 평가</h2>
+          <span>각 축을 별점으로 평가하고 코멘트를 남겨주세요</span>
+        </div>
+        {reputationAxes.map((axis, index) => (
+          <article className="student-peer-reputation-axis" key={axis.title}>
+            {index > 0 ? <div className="student-peer-reputation-divider" /> : null}
+            <div className="student-peer-reputation-axis-head">
+              <div>
+                <h3>{axis.title}</h3>
+                <p>{axis.description}</p>
+              </div>
+              <StarRating score={axis.score} />
+            </div>
+            <FigmaTextarea
+              aria-label={`${axis.title} 코멘트`}
+              defaultValue={axis.comment || undefined}
+              placeholder="이 축에 대한 코멘트를 남겨주세요 (선택)"
+            />
+          </article>
+        ))}
+      </section>
+
+      <section className="student-peer-reputation-card">
+        <div className="student-peer-reputation-card-head">
+          <h2>추천도</h2>
+          <span>이 동료를 함께 일할 사람으로 추천하시겠어요?</span>
+        </div>
+        <div className="student-peer-reputation-chip-row" aria-label="추천도">
+          {recommendations.map((item) => (
+            <FigmaChip key={item} selected={item === '적극 추천'}>
+              {item}
+            </FigmaChip>
           ))}
         </div>
-        <FigmaTextarea
-          label="추천 코멘트"
-          placeholder="동료의 강점이나 함께 일하며 인상 깊었던 점을 입력하세요."
-        />
-        <footer className="student-workflow-actions">
-          <Link className="figma-button figma-button--secondary" to={ROUTES.studentPeerEvaluations}>
-            취소
-          </Link>
-          <FigmaButton>평가 제출</FigmaButton>
-        </footer>
       </section>
+
+      <div className="student-peer-reputation-divider" />
+      <footer className="student-peer-reputation-actions">
+        <Link className="figma-button figma-button--secondary" to={ROUTES.studentPeerEvaluations}>
+          취소
+        </Link>
+        <div>
+          <span>같은 기간 재제출 시 마지막 평가로 덮어쓰기됩니다</span>
+          <FigmaButton>평가 저장</FigmaButton>
+        </div>
+      </footer>
     </section>
   )
 }

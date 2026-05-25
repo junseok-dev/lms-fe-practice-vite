@@ -6,7 +6,7 @@ type FigmaInputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 // Figma component: "공통 - Input Field / Variants"
-// label과 input을 항상 함께 두어 Figma 폼 필드의 구조와 접근성을 같이 유지합니다.
+// label과 input을 항상 함께 묶어 Figma 입력 필드 구조와 접근성을 같이 유지합니다.
 export function FigmaInputField({ id, label, ...props }: FigmaInputFieldProps) {
   const inputId = id ?? props.name ?? label
 

@@ -1,14 +1,16 @@
+import { Link } from 'react-router-dom'
 import { FigmaTabsBar } from '../../components/figma/common'
+import { ROUTES } from '../../constants/routes'
 import { studentCourse } from '../../mocks/studentCourse'
-import { courseTabs } from '../../mocks/studentCourseFlow'
+import { courseHomeTabs } from '../../mocks/studentCourseHome'
 import './student-course.css'
 
-// Figma의 "수강생 — 강의 홈 (/student/course)" 프레임을 구현하는 페이지입니다.
+// Figma의 "수강생 - 강의 홈 (/student/course)" 프레임을 구현하는 페이지입니다.
 // 아직 기능 연결은 하지 않고, mock 데이터로 화면 구조와 시각 규칙을 먼저 맞춥니다.
 export function StudentCoursePage() {
   return (
     <section className="student-course" aria-label="강의 홈">
-      <FigmaTabsBar activeValue="home" items={courseTabs} />
+      <FigmaTabsBar activeValue="home" items={courseHomeTabs} />
 
       <section className="student-course__summary" aria-label="과정 요약">
         <div className="student-course__summary-top">
@@ -53,7 +55,7 @@ export function StudentCoursePage() {
                 <h2>주차별 학습</h2>
                 <p>{studentCourse.currentWeekDescription}</p>
               </div>
-              <button type="button">전체 주차 보기 →</button>
+              <Link to={ROUTES.studentCourse}>전체 주차 보기 →</Link>
             </header>
 
             <div className="student-course__week-list">
@@ -76,7 +78,7 @@ export function StudentCoursePage() {
           <section className="student-course__panel student-course__notices" aria-label="공지">
             <header className="student-course__panel-header student-course__panel-header--compact">
               <h2>공지</h2>
-              <button type="button">공지 전체 →</button>
+              <Link to={ROUTES.studentCourse}>공지 전체 →</Link>
             </header>
 
             <div className="student-course__notice-list">
@@ -103,7 +105,9 @@ export function StudentCoursePage() {
                   <h3>{quiz.title}</h3>
                   <div>
                     <p>{quiz.description}</p>
-                    {quiz.action ? <button type="button">{quiz.action}</button> : null}
+                    {quiz.action ? (
+                      <Link to={ROUTES.studentQuizTake.replace(':quizId', 'jpa-persistence')}>{quiz.action}</Link>
+                    ) : null}
                   </div>
                 </article>
               ))}
@@ -113,7 +117,7 @@ export function StudentCoursePage() {
           <section className="student-course__side-panel student-course__assignment-panel" aria-label="마감 임박 과제">
             <header>
               <h2>마감 임박 과제</h2>
-              <button type="button">전체 →</button>
+              <Link to={ROUTES.studentCourseAssignments}>전체 →</Link>
             </header>
             <article>
               <div>
@@ -127,7 +131,7 @@ export function StudentCoursePage() {
           <section className="student-course__side-panel student-course__materials-panel" aria-label="새 자료">
             <header>
               <h2>새 자료</h2>
-              <button type="button">자료실 →</button>
+              <Link to={ROUTES.studentCourseMaterials}>자료실 →</Link>
             </header>
             <div>
               {studentCourse.materials.map((material) => (

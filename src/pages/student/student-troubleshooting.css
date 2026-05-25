@@ -23,7 +23,8 @@
   align-items: center;
 }
 
-.student-troubleshooting__toolbar {
+.student-troubleshooting__toolbar,
+.student-troubleshooting-card header {
   justify-content: space-between;
 }
 
@@ -32,11 +33,12 @@
   gap: 8px;
 }
 
-.student-troubleshooting__toolbar h2 {
+.student-troubleshooting__toolbar h2,
+.student-troubleshooting-card h3 {
   color: #121726;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .student-troubleshooting__toolbar span {
@@ -57,17 +59,6 @@
   border: 1px solid #e8eaed;
   border-radius: 14px;
   background: #ffffff;
-}
-
-.student-troubleshooting-card header {
-  justify-content: space-between;
-}
-
-.student-troubleshooting-card h3 {
-  color: #121726;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 .student-troubleshooting-card__meta {

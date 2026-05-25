@@ -1,21 +1,28 @@
 import { FigmaQuizTableRow, FigmaTabsBar } from '../../components/figma/common'
-import { courseTabs, studentQuizzes } from '../../mocks/studentCourseFlow'
+import { courseHomeTabs } from '../../mocks/studentCourseHome'
+import { studentQuizzesList } from '../../mocks/studentQuizzesList'
 import './student-course-flow.css'
 
-// Figma의 "수강생 — 퀴즈 목록 (/student/quizzes)" 프레임을 구현하는 페이지입니다.
+// Figma의 "수강생 - 퀴즈 목록 (/student/quizzes)" 프레임을 구현하는 페이지입니다.
 // 실제 응시 상태 변경은 하지 않고, 목록에서 응시/결과 화면으로 이동하는 흐름만 연결합니다.
 export function StudentQuizzesPage() {
   return (
     <section className="student-course-flow" aria-label="퀴즈 목록">
-      <FigmaTabsBar activeValue="quizzes" items={courseTabs} />
+      <FigmaTabsBar activeValue="quizzes" items={courseHomeTabs} />
 
-      <div className="quiz-status-tabs">
-        {studentQuizzes.statusFilters.map((filter, index) => (
-          <button className={index === 0 ? 'is-active' : undefined} key={filter.label} type="button">
-            {filter.label}
-            <span>{filter.count}</span>
-          </button>
-        ))}
+      <div className="quiz-tabs-wrap">
+        <div className="quiz-status-tabs">
+          {studentQuizzesList.statusFilters.map((filter, index) => (
+            <button className={index === 0 ? 'is-active' : undefined} key={filter.label} type="button">
+              {filter.label}
+              <span>{filter.count}</span>
+            </button>
+          ))}
+        </div>
+        <label className="quiz-search">
+          <span>퀴즈명 검색</span>
+          <input placeholder="🔍 퀴즈명 검색" />
+        </label>
       </div>
 
       <section className="quiz-table-card" aria-label="퀴즈 테이블">
@@ -29,7 +36,7 @@ export function StudentQuizzesPage() {
           <span />
         </div>
 
-        {studentQuizzes.rows.map((quiz, index) => (
+        {studentQuizzesList.rows.map((quiz, index) => (
           <FigmaQuizTableRow key={`${quiz.title}-${index}`} {...quiz} />
         ))}
       </section>

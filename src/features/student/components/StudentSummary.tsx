@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { FigmaKpiCard } from '../../../components/figma/common'
+import { ROUTES } from '../../../constants/routes'
 import {
+  dashboardAlerts,
   dashboardDueQuizzes,
   dashboardKpis,
   dashboardNotices,
@@ -10,8 +13,8 @@ import {
 } from '../../../mocks/studentDashboard'
 import './student-dashboard.css'
 
-// Figma의 "수강생 — 대시보드 (/student/dashboard)" 프레임을 기준으로 구현한 화면입니다.
-// 카드형 대시보드가 아니라 Figma처럼 넓은 본문 안에 KPI, 리스트, 출결, 공지/프로젝트가 순서대로 배치됩니다.
+// Figma "수강생 - 대시보드 (/student/dashboard)" 프레임을 기준으로 구현한 화면입니다.
+// 대시보드는 카드형 대체 화면이 아니라 Figma처럼 흰 본문 안에 KPI, 리스트, 출석, 공지, 프로젝트를 순서대로 배치합니다.
 export function StudentSummary() {
   return (
     <div className="student-dashboard">
@@ -32,13 +35,13 @@ export function StudentSummary() {
       </section>
 
       <section className="dashboard-learning-section" aria-label="학습 할 일과 퀴즈">
-        <DashboardPanel count="4건" linkText="전체 →" title="오늘 · 이번 주 할 일">
+        <DashboardPanel count="4건" linkText="전체 →" linkTo={ROUTES.studentCourseAssignments} title="오늘 · 이번 주 할 일">
           {dashboardTodos.map((todo) => (
-            <TodoRow due={todo.due} key={todo.title} title={todo.title} tone={todo.tagTone} />
+            <TodoRow due={todo.due} key={todo.title} tag={todo.tag} title={todo.title} tone={todo.tagTone} />
           ))}
         </DashboardPanel>
 
-        <DashboardPanel count="Top 3" linkText="퀴즈 전체 →" title="마감 임박 퀴즈">
+        <DashboardPanel count="Top 3" linkText="퀴즈 전체 →" linkTo={ROUTES.studentQuizzes} title="마감 임박 퀴즈">
           {dashboardDueQuizzes.map((quiz) => (
             <QuizRow
               course={quiz.course}
@@ -51,10 +54,10 @@ export function StudentSummary() {
         </DashboardPanel>
       </section>
 
-      <section className="dashboard-attendance-section" aria-label="출결">
+      <section className="dashboard-attendance-section" aria-label="출석">
         <header className="dashboard-section-title">
           <div>
-            <h2>출결</h2>
+            <h2>출석</h2>
           </div>
           <button className="attendance-month-button" type="button">
             2026년 5월 <span>▾</span>
@@ -62,7 +65,7 @@ export function StudentSummary() {
         </header>
 
         <div className="dashboard-attendance-body">
-          <div className="attendance-calendar" aria-label="2026년 5월 출결 달력">
+          <div className="attendance-calendar" aria-label="2026년 5월 출석 달력">
             <div className="attendance-weekdays">
               {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
                 <span key={day}>{day}</span>
@@ -127,7 +130,7 @@ export function StudentSummary() {
                 <i className="is-absent" /> 결석
               </span>
               <span>
-                <i className="is-holiday" /> 휴일/공가
+                <i className="is-holiday" /> 휴일/공휴일
               </span>
             </div>
           </div>
@@ -173,22 +176,21 @@ export function StudentSummary() {
       </section>
 
       <section className="dashboard-notifications-section" aria-label="공지와 알림">
-        <DashboardPanel linkText="공지 전체 →" title="공지사항">
+        <DashboardPanel linkText="공지 전체 →" linkTo={ROUTES.studentCourse} title="공지사항">
           {dashboardNotices.map((notice) => (
             <SimpleRow key={notice.title} meta={notice.meta} title={notice.title} />
           ))}
         </DashboardPanel>
 
-        <DashboardPanel linkText="알림 전체 →" title="최근 알림">
-          <SimpleRow meta="운영자 · 5/13" title="Spring Security 퀴즈가 오늘 18:00에 마감됩니다." />
-          <SimpleRow meta="멘토 · 5/12" title="WeatherAPI 프로젝트에 피드백이 등록되었습니다." />
-          <SimpleRow meta="운영자 · 5/12" title="블로그 보완 요청 코멘트가 도착했습니다." />
-          <SimpleRow meta="시스템 · 5/11" title="마일리지 적립 내역이 갱신되었습니다." />
+        <DashboardPanel linkText="알림 전체 →" linkTo={ROUTES.studentDashboard} title="최근 알림">
+          {dashboardAlerts.map((alert) => (
+            <SimpleRow key={alert.title} meta={alert.meta} title={alert.title} />
+          ))}
         </DashboardPanel>
       </section>
 
       <section className="dashboard-projects-section" aria-label="프로젝트와 트러블슈팅">
-        <DashboardPanel linkText="프로젝트 전체 →" title="프로젝트">
+        <DashboardPanel linkText="프로젝트 전체 →" linkTo={ROUTES.studentProjects} title="프로젝트">
           {dashboardProjects.map((project) => (
             <ProjectRow
               key={project.title}
@@ -214,7 +216,7 @@ export function StudentSummary() {
           <div className="change-request-card">
             <div>
               <strong>변경 제안 진행</strong>
-              <p>5/12 WeatherAPI 산출물 링크 수정</p>
+              <p>5/12 WeatherAPI 제출물 링크 수정</p>
             </div>
             <dl>
               <div>
@@ -241,10 +243,11 @@ type DashboardPanelProps = {
   children: ReactNode
   count?: string
   linkText?: string
+  linkTo?: string
   title: string
 }
 
-function DashboardPanel({ children, count, linkText, title }: DashboardPanelProps) {
+function DashboardPanel({ children, count, linkText, linkTo, title }: DashboardPanelProps) {
   return (
     <article className="dashboard-panel">
       <header className="dashboard-panel__header">
@@ -252,7 +255,7 @@ function DashboardPanel({ children, count, linkText, title }: DashboardPanelProp
           <h2>{title}</h2>
           {count ? <span>{count}</span> : null}
         </div>
-        {linkText ? <a href="/student/dashboard">{linkText}</a> : null}
+        {linkText && linkTo ? <Link to={linkTo}>{linkText}</Link> : null}
       </header>
       <div className="dashboard-panel__body">{children}</div>
     </article>
@@ -261,18 +264,19 @@ function DashboardPanel({ children, count, linkText, title }: DashboardPanelProp
 
 type TodoRowProps = {
   due: string
+  tag: string
   title: string
   tone: string
 }
 
-function TodoRow({ due, title, tone }: TodoRowProps) {
+function TodoRow({ due, tag, title, tone }: TodoRowProps) {
   return (
     <div className="dashboard-row dashboard-row--todo">
       <span className="todo-check" aria-hidden="true" />
       <div>
         <strong>{title}</strong>
         <p>
-          <span className={`mini-tag is-${tone}`} />
+          <span className={`mini-tag is-${tone}`}>{tag}</span>
           {due}
         </p>
       </div>
@@ -294,13 +298,13 @@ function QuizRow({ course, due, estimate, title }: QuizRowProps) {
         <strong>{title}</strong>
         <p>
           {course}
-          <span>•</span>
+          <span>·</span>
           {estimate}
         </p>
       </div>
       <div className="quiz-action">
         <em>{due}</em>
-        <a href="/student/quizzes">응시 →</a>
+        <Link to={ROUTES.studentQuizTake.replace(':quizId', 'jpa-persistence')}>응시 →</Link>
       </div>
     </div>
   )

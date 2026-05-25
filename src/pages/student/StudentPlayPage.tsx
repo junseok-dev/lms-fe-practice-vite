@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FigmaButton, FigmaStatusBadge } from '../../components/figma/common'
 import { studentPlay } from '../../mocks/studentPlay'
 import './student-play.css'
@@ -40,7 +41,13 @@ export function StudentPlayPage() {
                 </>
               ) : null}
 
-              <FigmaButton disabled={!game.enabled}>{game.action}</FigmaButton>
+              {game.enabled && game.href ? (
+                <Link className="figma-button figma-button--primary" to={game.href}>
+                  {game.action}
+                </Link>
+              ) : (
+                <FigmaButton disabled>{game.action}</FigmaButton>
+              )}
             </article>
           ))}
         </div>

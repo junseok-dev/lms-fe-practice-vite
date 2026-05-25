@@ -32,6 +32,7 @@ export const studentPlay = {
       progress: 72,
       helper: '이번 주 최고 612타 · 정확도 97.2%',
       action: '게임 입장',
+      href: '/student/play/typing',
     },
     {
       title: '코딩 스피드',

@@ -188,25 +188,34 @@
 }
 
 .mini-tag {
-  width: 24px;
-  height: 8px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 16px;
+  padding: 2px 7px;
   border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
 }
 
 .mini-tag.is-warn {
   background: #fef3c7;
+  color: #d97706;
 }
 
 .mini-tag.is-info {
   background: #dbeafe;
+  color: #2563eb;
 }
 
 .mini-tag.is-success {
   background: #e6f7f6;
+  color: #29b5b0;
 }
 
 .mini-tag.is-plain {
   background: #f8f9fb;
+  color: #5d6271;
 }
 
 .dashboard-row--quiz,

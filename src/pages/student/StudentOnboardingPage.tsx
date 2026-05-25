@@ -1,26 +1,51 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { ROUTES } from '../../constants/routes'
 import './student-onboarding.css'
 
 type OnboardingStep = 1 | 2 | 3
 
-const skills = ['Java', 'Spring', 'Python', 'React', 'SQL']
+const skills = ['Java', 'Spring', 'React', 'SQL', 'Python', 'Docker', 'Git', 'AWS', 'JPA', 'TypeScript', 'REST API', 'Linux']
+
+function getInitialStep(stepParam: string | null): OnboardingStep {
+  if (stepParam === 'skills') return 2
+  if (stepParam === 'links') return 3
+  return 1
+}
+
+function getStepParam(step: OnboardingStep) {
+  if (step === 2) return 'skills'
+  if (step === 3) return 'links'
+  return null
+}
 
 // Figma의 온보딩 화면을 3단계 흐름으로 구현한 페이지입니다.
 // Step 1의 학습 다짐은 필수값이므로 비어 있으면 다음 단계로 넘어갈 수 없습니다.
 export function StudentOnboardingPage() {
   const navigate = useNavigate()
-  const [step, setStep] = useState<OnboardingStep>(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [step, setStepState] = useState<OnboardingStep>(() => getInitialStep(searchParams.get('step')))
   const [pledge, setPledge] = useState('')
-  const [selectedSkills, setSelectedSkills] = useState<string[]>(['Java', 'Spring'])
+  const [didTryNext, setDidTryNext] = useState(false)
+  const [selectedSkills, setSelectedSkills] = useState<string[]>(['Java', 'Spring', 'SQL', 'Git'])
   const [blogUrl, setBlogUrl] = useState('')
   const [githubUrl, setGithubUrl] = useState('')
 
   const isPledgeMissing = !pledge.trim()
 
+  function setStep(nextStep: OnboardingStep) {
+    setStepState(nextStep)
+    const nextStepParam = getStepParam(nextStep)
+    if (nextStepParam) {
+      setSearchParams({ step: nextStepParam })
+    } else {
+      setSearchParams({})
+    }
+  }
+
   function goNext() {
     if (step === 1 && isPledgeMissing) {
+      setDidTryNext(true)
       return
     }
 
@@ -29,11 +54,11 @@ export function StudentOnboardingPage() {
       return
     }
 
-    setStep((current) => (current + 1) as OnboardingStep)
+    setStep((step + 1) as OnboardingStep)
   }
 
   function goPrev() {
-    setStep((current) => Math.max(1, current - 1) as OnboardingStep)
+    setStep(Math.max(1, step - 1) as OnboardingStep)
   }
 
   function toggleSkill(skill: string) {
@@ -70,20 +95,20 @@ export function StudentOnboardingPage() {
       </section>
 
       <ol className="onboarding-stepper">
-        <li className={step === 1 ? 'is-active' : ''}>
+        <li className={step === 1 ? 'is-active' : 'is-complete'}>
           <button onClick={() => setStep(1)} type="button">
             <span>1</span>
             다짐
           </button>
         </li>
-        <li className={step === 2 ? 'is-active' : ''}>
-          <button disabled={isPledgeMissing} onClick={() => setStep(2)} type="button">
+        <li className={step === 2 ? 'is-active' : step === 3 ? 'is-complete' : ''}>
+          <button onClick={() => setStep(2)} type="button">
             <span>2</span>
             스킬
           </button>
         </li>
         <li className={step === 3 ? 'is-active' : ''}>
-          <button disabled={isPledgeMissing} onClick={() => setStep(3)} type="button">
+          <button onClick={() => setStep(3)} type="button">
             <span>3</span>
             외부 URL
           </button>
@@ -113,7 +138,7 @@ export function StudentOnboardingPage() {
               <em>{pledge.length} / 300</em>
             </label>
 
-            {isPledgeMissing ? (
+            {didTryNext && isPledgeMissing ? (
               <p className="onboarding-required">학습 다짐은 필수 입력값입니다.</p>
             ) : null}
             <p className="onboarding-tip">입력한 다짐은 대시보드 상단과 마이 프로필에 노출됩니다.</p>
@@ -123,12 +148,13 @@ export function StudentOnboardingPage() {
         {step === 2 ? (
           <>
             <p className="onboarding-card__eyebrow">STEP 02 / 03</p>
-            <h2>관심 스킬을 선택해 주세요</h2>
-            <p>
-              Skill 마스터에서 다중 선택할 수 있어요. 지금 선택한 값은 이후 추천
-              학습 콘텐츠와 프로필에 활용됩니다.
-            </p>
+            <h2>관심 스킬을 선택해주세요</h2>
+            <p>앞으로 집중하고 싶은 기술을 선택해주세요. 선택한 스킬은 수강 역량 증명서 종합 요약과 추천 학습 자료에 활용됩니다.</p>
 
+            <div className="skill-field__label">
+              <span>관심 스킬</span>
+              <b>다중 선택</b>
+            </div>
             <div className="skill-picker" aria-label="관심 스킬">
               {skills.map((skill) => (
                 <button
@@ -137,27 +163,32 @@ export function StudentOnboardingPage() {
                   onClick={() => toggleSkill(skill)}
                   type="button"
                 >
-                  {skill}
+                  {selectedSkills.includes(skill) ? `✓ ${skill}` : skill}
                 </button>
               ))}
+              <p>{selectedSkills.length}개 선택됨 · 최대 8개까지 선택 가능</p>
             </div>
 
-            <p className="onboarding-tip">선택한 스킬: {selectedSkills.join(', ') || '없음'}</p>
+            <p className="onboarding-tip">선택한 스킬은 온보딩 완료 후에도 마이 프로필에서 수정할 수 있습니다.</p>
           </>
         ) : null}
 
         {step === 3 ? (
           <>
             <p className="onboarding-card__eyebrow">STEP 03 / 03</p>
-            <h2>외부 URL을 등록해 주세요</h2>
-            <p>블로그·GitHub 링크를 등록하세요. 선택 입력입니다.</p>
+            <h2>외부 URL을 연결해주세요</h2>
+            <p>블로그와 GitHub 주소를 등록하면 증명서와 마이 프로필에서 학습 근거로 활용할 수 있습니다.</p>
 
+            <div className="url-field__label">
+              <span>외부 링크</span>
+              <b>선택</b>
+            </div>
             <div className="url-fields">
               <label>
                 블로그 URL
                 <input
                   onChange={(event) => setBlogUrl(event.target.value)}
-                  placeholder="https://blog.example.com"
+                  placeholder="https://your-blog.example.com/posts/..."
                   type="url"
                   value={blogUrl}
                 />
@@ -166,27 +197,27 @@ export function StudentOnboardingPage() {
                 GitHub URL
                 <input
                   onChange={(event) => setGithubUrl(event.target.value)}
-                  placeholder="https://github.com/username"
+                  placeholder="https://github.com/your-name"
                   type="url"
                   value={githubUrl}
                 />
               </label>
             </div>
 
-            <p className="onboarding-tip">외부 링크는 마이 프로필에서 언제든 수정할 수 있습니다.</p>
+            <p className="onboarding-tip">외부 URL은 공개 설정에서 노출 여부를 다시 조정할 수 있습니다.</p>
           </>
         ) : null}
 
         <footer className="onboarding-card__actions">
           <Link to={ROUTES.studentDashboard}>건너뛰기</Link>
-          <button disabled={step === 1} onClick={goPrev} type="button">이전</button>
+          <button disabled={step === 1} onClick={goPrev} type="button">{step === 1 ? '이전' : '← 이전'}</button>
           <button
             className="primary"
             disabled={step === 1 && isPledgeMissing}
             onClick={goNext}
             type="button"
           >
-            {step === 3 ? '완료' : '다음 →'}
+            {step === 3 ? '시작하기' : '다음 →'}
           </button>
         </footer>
       </section>
@@ -195,6 +226,7 @@ export function StudentOnboardingPage() {
         <article className={step === 2 ? 'is-current' : ''}>
           <p>STEP 02</p>
           <h3>관심 스킬 선택</h3>
+          <small>Skill 마스터에서 다중 선택할 수 있어요.</small>
           {skills.map((skill) => (
             <span key={skill}>{skill}</span>
           ))}
@@ -202,8 +234,9 @@ export function StudentOnboardingPage() {
         <article className={step === 3 ? 'is-current' : ''}>
           <p>STEP 03</p>
           <h3>외부 URL 등록</h3>
-          <div>블로그 URL (선택)</div>
-          <div>GitHub URL (선택)</div>
+          <small>블로그·GitHub 링크를 등록하세요. 선택 입력입니다.</small>
+          <div>🔗 블로그 URL (선택)</div>
+          <div>🔗 GitHub URL (선택)</div>
         </article>
       </section>
 

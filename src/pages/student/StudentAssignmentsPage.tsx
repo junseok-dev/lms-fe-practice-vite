@@ -16,7 +16,7 @@ export function StudentAssignmentsPage() {
           { badge: '2', label: '퀴즈', to: ROUTES.studentQuizzes, value: 'quizzes' },
           { badge: '24', label: '자료실', to: ROUTES.studentCourseMaterials, value: 'materials' },
           { badge: '1', label: '과제/실습', to: ROUTES.studentCourseAssignments, value: 'assignments' },
-          { label: '역량 리포트', to: ROUTES.studentCourse, value: 'report' },
+          { label: '수강 역량 증명서 종합 요약', to: ROUTES.studentCourse, value: 'report' },
         ]}
       />
 

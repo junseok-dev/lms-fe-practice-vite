@@ -1,9 +1,11 @@
-import { FigmaButton, FigmaStatusBadge } from '../../components/figma/common'
+import { Link } from 'react-router-dom'
+import { FigmaStatusBadge } from '../../components/figma/common'
+import { ROUTES } from '../../constants/routes'
 import { studentMileage } from '../../mocks/studentMileage'
 import './student-mileage.css'
 
 // Figma의 "수강생 — 내 마일리지 (/student/mileage)" 프레임을 구현하는 페이지입니다.
-// 상품 신청과 전체 내역 버튼은 아직 실제 기능 없이, 현재 보유/사용 현황을 mock 데이터로 재현합니다.
+// 현재 보유/사용 현황을 mock 데이터로 재현하고, 상세 상품/내역 라우트로 진입시킵니다.
 export function StudentMileagePage() {
   return (
     <section className="student-mileage" aria-label="내 마일리지">
@@ -22,7 +24,9 @@ export function StudentMileagePage() {
         <section className="student-mileage-panel student-mileage-panel--history">
           <header>
             <h2>최근 적립·사용 내역</h2>
-            <FigmaButton kind="secondary">전체 내역</FigmaButton>
+            <Link className="figma-button figma-button--secondary" to={ROUTES.studentMileageHistory}>
+              전체 내역
+            </Link>
           </header>
 
           <div className="student-mileage-history">
@@ -48,7 +52,9 @@ export function StudentMileagePage() {
                   <h3>{product.title}</h3>
                   <p>{product.limit}</p>
                 </div>
-                <FigmaButton>신청</FigmaButton>
+                <Link className="figma-button figma-button--primary" to={ROUTES.studentMileageProducts}>
+                  신청
+                </Link>
               </article>
             ))}
           </div>

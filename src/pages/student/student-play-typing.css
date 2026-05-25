@@ -1,6 +1,7 @@
 /* PLAY 타자 게임 화면의 KPI, 입력 영역, 제시문 카드 배치를 관리합니다. */
 .student-play-typing-page {
   display: grid;
+  align-content: start;
   gap: 30px;
   padding: 32px 72px;
 }
@@ -11,27 +12,36 @@
   gap: 16px;
 }
 
-.student-play-typing-kpi {
+.student-play-typing-kpis .figma-kpi-card {
   display: grid;
   gap: 8px;
-  min-height: 118px;
+  width: auto;
+  height: 118px;
   padding: 18px;
   border: 1px solid #e8eaed;
   border-radius: 8px;
 }
 
-.student-play-typing-kpi span {
+.student-play-typing-kpis .figma-kpi-card p {
   color: #5c667a;
   font-size: 12px;
   font-weight: 500;
 }
 
-.student-play-typing-kpi strong {
+.student-play-typing-kpis .figma-kpi-card strong {
   color: #29b5b0;
   font-size: 24px;
+  letter-spacing: 0;
+  line-height: 35px;
 }
 
-.student-play-typing-kpi small {
+.student-play-typing-kpis .figma-kpi-card div span {
+  color: #29b5b0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.student-play-typing-kpis .figma-kpi-card small {
   padding-top: 10px;
   border-top: 1px solid #f0f2f7;
   color: #9ea8b8;
@@ -194,5 +204,14 @@
   .student-play-typing-main,
   .student-play-typing-prompts__grid {
     grid-template-columns: 1fr;
+  }
+
+  .student-play-typing-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .student-play-typing-actions .figma-button:last-child {
+    margin-left: 0;
   }
 }

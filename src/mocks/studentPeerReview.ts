@@ -11,7 +11,7 @@ export const studentPeerReview = {
       iconTone: 'mint',
       title: 'PeerTag 부여',
       description:
-        '동료에게 어울리는 작업 태그를 익명으로 부여합니다. 부여한 태그는 동료의 증명서 태그 클라우드에 반영됩니다.',
+        '동료에게 어울리는 협업 태그를 익명으로 부여합니다. 부여한 태그는 동료의 증명서 태그 클라우드에 반영됩니다.',
       availableLabel: '부여 가능한 동료',
       availableCount: '23명',
       completed: '12명 완료',
@@ -19,11 +19,11 @@ export const studentPeerReview = {
       href: '/student/peer-tag',
     },
     {
-      icon: '5',
+      icon: '★',
       iconTone: 'purple',
       title: 'PeerReputation 5축 평가',
-      description: '기술, 책임감, 소통, 협업, 피드백 5축으로 동료를 평가하고 추천 여부를 선택합니다.',
-      availableLabel: '평가 가능한 동료',
+      description: '기술·책임감·소통·성장·팀워크 5축으로 동료를 평가하고 추천도를 남깁니다.',
+      availableLabel: '부여 가능 동료',
       availableCount: '23명',
       completed: '8명 완료',
       buttonLabel: '5축 평가하기',

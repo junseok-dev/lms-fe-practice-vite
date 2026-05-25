@@ -9,7 +9,7 @@ type FigmaSidebarProps = {
 }
 
 // Figma component: "공통 - Sidebar / Base"
-// 메뉴 이름과 역할 라벨만 바꾸면 수강생, 멘토, 강사, 운영자 화면에서 같은 사이드바 구조를 재사용합니다.
+// 메뉴명과 역할 라벨만 바꾸면 수강생, 멘토, 강사, 운영자 화면에서 같은 사이드바 구조를 재사용합니다.
 export function FigmaSidebar({ activeLabel, items, roleLabel }: FigmaSidebarProps) {
   return (
     <aside className="figma-sidebar" aria-label={`${roleLabel} 메뉴`}>
@@ -24,9 +24,7 @@ export function FigmaSidebar({ activeLabel, items, roleLabel }: FigmaSidebarProp
         {items.map((item) => (
           <NavLink
             className={({ isActive }) =>
-              isActive || item.label === activeLabel
-                ? 'figma-sidebar__link is-active'
-                : 'figma-sidebar__link'
+              isActive || item.label === activeLabel ? 'figma-sidebar__link is-active' : 'figma-sidebar__link'
             }
             key={item.label}
             to={item.path}

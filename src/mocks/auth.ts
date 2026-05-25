@@ -32,8 +32,9 @@ export const demoAccounts: DemoAccount[] = [
     password: '1234',
     name: '김수강',
     role: 'student',
-    label: '수강생 대시보드',
-    nextPath: ROUTES.studentDashboard,
+    label: '수강생 온보딩',
+    nextPath: ROUTES.studentOnboarding,
+    needsOnboarding: true,
   },
   {
     id: 'mentor-demo',

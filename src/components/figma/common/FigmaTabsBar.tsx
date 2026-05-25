@@ -12,7 +12,7 @@ type FigmaTabsBarProps = {
 }
 
 // Figma component: "공통 - Tabs Bar / Base"
-// 탭 UI는 Figma 공통 모양을 유지하고, to가 있는 항목만 라우팅 링크로 동작하게 합니다.
+// 탭 UI는 Figma 공통 모양을 유지하고, to가 있는 항목만 라우터 링크로 동작하게 합니다.
 export function FigmaTabsBar({ activeValue, items }: FigmaTabsBarProps) {
   return (
     <div className="figma-tabs" role="tablist">
@@ -25,7 +25,13 @@ export function FigmaTabsBar({ activeValue, items }: FigmaTabsBarProps) {
             {item.badge ? <span>{item.badge}</span> : null}
           </Link>
         ) : (
-          <button aria-selected={item.value === activeValue} className={className} key={item.value} role="tab" type="button">
+          <button
+            aria-selected={item.value === activeValue}
+            className={className}
+            key={item.value}
+            role="tab"
+            type="button"
+          >
             {item.label}
             {item.badge ? <span>{item.badge}</span> : null}
           </button>

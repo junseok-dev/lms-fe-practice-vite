@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+
+import { ROUTES } from '../../constants/routes'
 import { quizResult } from '../../mocks/studentCourseFlow'
 import './student-course-flow.css'
 
@@ -71,7 +74,7 @@ export function StudentQuizResultPage() {
       <section className="quiz-category-card" aria-label="카테고리별 점수">
         <header>
           <h2>카테고리별 점수</h2>
-          <p>문항별 카테고리는 역량 리포트의 세부 지표와 연결됩니다</p>
+          <p>문항별 카테고리는 수강 역량 증명서 종합 요약의 세부 지표와 연결됩니다</p>
         </header>
         <div>
           {quizResult.categories.map(([label, score, tone]) => (
@@ -104,7 +107,12 @@ export function StudentQuizResultPage() {
         </header>
 
         {quizResult.answers.map((answer) => (
-          <article className={`quiz-answer-card quiz-answer-card--${answer.state}`} key={answer.no}>
+          <article
+            className={`quiz-answer-card quiz-answer-card--${answer.state}${
+              'feedback' in answer ? ' quiz-answer-card--has-feedback' : ''
+            }`}
+            key={answer.no}
+          >
             <strong>{answer.no}</strong>
             <div>
               <span>{answer.type}</span>
@@ -122,9 +130,33 @@ export function StudentQuizResultPage() {
               <span>점수</span>
               <strong>{answer.score}</strong>
             </aside>
+            {'feedback' in answer ? (
+              <div className="quiz-answer-feedback">
+                <i aria-hidden="true" />
+                <strong>{answer.feedback.label}</strong>
+                <span>{answer.feedback.message}</span>
+              </div>
+            ) : null}
           </article>
         ))}
       </section>
+
+      <footer className="quiz-result-actions" aria-label="퀴즈 결과 하단 작업">
+        <Link className="quiz-result-actions__back" to={ROUTES.studentQuizzes}>
+          {quizResult.actions.back}
+        </Link>
+        <div>
+          <Link
+            className="quiz-result-actions__secondary"
+            to={ROUTES.studentQuizTake.replace(':quizId', 'jpa-persistence')}
+          >
+            {quizResult.actions.secondary}
+          </Link>
+          <Link className="quiz-result-actions__primary" to={ROUTES.studentQuizzes}>
+            {quizResult.actions.primary}
+          </Link>
+        </div>
+      </footer>
     </section>
   )
 }

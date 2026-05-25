@@ -1,10 +1,10 @@
 // PLAY 타자 게임 화면용 mock 데이터입니다.
 // 실제 게임 로직은 나중에 붙이고, 현재는 Figma 화면을 재현하는 정적 상태만 제공합니다.
 export const typingKpis = [
-  { label: '남은 시간', value: '02:30', helper: '세션 진행 중' },
-  { label: '현재 타수', value: '486타', helper: '실시간 입력 기준' },
-  { label: '정확도', value: '96.4%', helper: '오타 7회' },
-  { label: '예상 점수', value: '78,200', helper: '제출 시 서버 재계산' },
+  { label: '남은 시간', value: '02:30', unit: '', helper: '세션 진행 중' },
+  { label: '현재 타수', value: '486', unit: '타', helper: '실시간 입력 기준' },
+  { label: '정확도', value: '96.4', unit: '%', helper: '오타 7회' },
+  { label: '예상 점수', value: '78,200', unit: '', helper: '제출 시 서버 재계산' },
 ]
 
 export const typingPrompt =

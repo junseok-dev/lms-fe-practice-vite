@@ -47,6 +47,9 @@ export function StudentMileageProductsPage() {
           <FigmaTextarea label="매니저에게 남길 메모" placeholder="구매 목적이나 확인이 필요한 내용을 적어주세요." />
         </div>
         <div className="student-mileage-request-card__submit">
+          <Link className="figma-button figma-button--secondary" to={ROUTES.studentMileage}>
+            취소
+          </Link>
           <FigmaButton>요청 제출</FigmaButton>
         </div>
       </section>

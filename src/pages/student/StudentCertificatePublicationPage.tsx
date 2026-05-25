@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import { FigmaNoticeBanner } from '../../components/figma/common'
+import { ROUTES } from '../../constants/routes'
 import { studentCertificatePublication } from '../../mocks/studentLearningEvidence'
 import './student-learning-evidence.css'
 
@@ -7,14 +10,16 @@ export function StudentCertificatePublicationPage() {
   return (
     <section className="student-evidence certificate-publication" aria-label="증명서 공개 설정">
       <div className="publication-user-chip">
-        <span>김</span>
+        <span>수</span>
         <strong>{studentCertificatePublication.user}</strong>
       </div>
 
       <section className="publication-complete-card">
         <div>
-          <p>ENCORE DATA</p>
-          <strong>VERIFIED</strong>
+          <em>✓</em>
+          <p>정식 인증 완료</p>
+          <span>인증일 2026-05-14</span>
+          <strong>certified</strong>
         </div>
         <article>
           <small>학생 / 과정·기수</small>
@@ -28,7 +33,7 @@ export function StudentCertificatePublicationPage() {
           <small>snapshotHash</small>
           <strong>{studentCertificatePublication.complete.snapshotHash}</strong>
         </article>
-        <button type="button">상세 보기</button>
+        <Link to={ROUTES.studentCertificate}>증명서 상세 보기</Link>
       </section>
 
       <section className="publication-toggle-card">
@@ -38,7 +43,9 @@ export function StudentCertificatePublicationPage() {
         </div>
         <strong>{studentCertificatePublication.toggle.state}</strong>
         <span aria-hidden="true" />
-        <p className="publication-notice">{studentCertificatePublication.toggle.notice}</p>
+        <FigmaNoticeBanner title={studentCertificatePublication.toggle.notice}>
+          외부 검증 URL 비공개. 검증자는 "비공개 증명서" 안내만 받습니다. 정식 인증 마크는 그대로 유지됩니다.
+        </FigmaNoticeBanner>
       </section>
 
       <div className="publication-grid">
@@ -49,14 +56,16 @@ export function StudentCertificatePublicationPage() {
           </header>
           <label>
             <span>검증 URL</span>
-            <input readOnly value={studentCertificatePublication.verification.url} />
+            <div className="publication-url-field">
+              <input readOnly value={studentCertificatePublication.verification.url} />
+              <button type="button">복사</button>
+            </div>
           </label>
           <div className="publication-qr-row">
             <div className="publication-qr" aria-label="QR 코드 미리보기">
-              <span />
-              <span />
-              <span />
-              <span />
+              {Array.from({ length: 81 }, (_, index) => (
+                <span key={index} />
+              ))}
             </div>
             <div>
               <p>{studentCertificatePublication.verification.qrHint}</p>
@@ -72,9 +81,36 @@ export function StudentCertificatePublicationPage() {
             <h2>{studentCertificatePublication.preview.title}</h2>
             <p>{studentCertificatePublication.preview.description}</p>
           </header>
-          <div>
-            <strong>비공개 증명서</strong>
-            <p>수강생이 공개를 허용하면 외부 검증 페이지에서 인증 정보를 확인할 수 있습니다.</p>
+          <div className="publication-preview-browser">
+            <div className="publication-preview-browser__bar">
+              <i aria-hidden="true" />
+              <i aria-hidden="true" />
+              <i aria-hidden="true" />
+              <span>verify.playdata.io/v/abc123def456</span>
+            </div>
+            <div className="publication-preview-browser__body">
+              <span className="publication-preview-certified">CERTIFIED</span>
+              <h3>수강 Kim</h3>
+              <p>백엔드 부트캠프 · 3기</p>
+              <section className="publication-preview-cardlet">
+                <span>핵심 역량</span>
+                <strong>B+</strong>
+              </section>
+              <section className="publication-preview-cardlet publication-preview-cardlet--project">
+                <span>대표 프로젝트 1건</span>
+                <strong>WeatherAPI 분석 서비스</strong>
+                <em>Python</em>
+              </section>
+              <small>검증자 · 외부 인사담당자 / 채용자 등</small>
+              <article className="publication-preview-off-modal">
+                <span aria-hidden="true">🔒</span>
+                <div>
+                  <b>공개 OFF</b>
+                  <small>외부 검증자는 "비공개 증명서" 안내만 받습니다</small>
+                  <em>공개 ON으로 전환하면 위 화면이 노출됩니다</em>
+                </div>
+              </article>
+            </div>
           </div>
           <small>{studentCertificatePublication.preview.footnote}</small>
         </section>
@@ -104,7 +140,7 @@ export function StudentCertificatePublicationPage() {
       <section className="publication-privacy-card">
         <strong>개인정보 안내</strong>
         <p>{studentCertificatePublication.privacy}</p>
-        <button type="button">공개 항목 관리</button>
+        <Link to={ROUTES.studentCertificate}>공개 항목 관리</Link>
       </section>
     </section>
   )

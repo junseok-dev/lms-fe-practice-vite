@@ -59,6 +59,11 @@
     grid-template-columns: 1fr;
   }
 
+  .student-layout:has(.student-layout__content--attendance-form) .figma-sidebar,
+  .student-layout:has(.student-layout__content--attendance-form) .figma-header {
+    display: none;
+  }
+
   .student-layout__main {
     border-left: 0;
   }
@@ -66,5 +71,10 @@
   .student-layout__content {
     width: 100%;
     padding: 28px 24px;
+  }
+
+  .student-layout__content--attendance-form {
+    min-height: 100svh;
+    padding: 0;
   }
 }

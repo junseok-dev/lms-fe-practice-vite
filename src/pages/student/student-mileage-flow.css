@@ -7,12 +7,14 @@
 .student-mileage-products-page {
   display: grid;
   gap: 24px;
+  align-content: start;
 }
 
 .student-mileage-products-page__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 34px;
 }
 
 .student-mileage-products-page__title {
@@ -36,12 +38,14 @@
 
 .student-mileage-filter {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   min-height: 54px;
   padding: 9px 16px;
   border: 1px solid #e8eaed;
   border-radius: 8px;
+  background: #ffffff;
 }
 
 .student-mileage-product-grid {
@@ -50,11 +54,15 @@
   gap: 24px;
 }
 
+.student-mileage-product-grid .figma-marketplace-product-card {
+  min-height: 176px;
+}
+
 .student-mileage-request-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 28px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px 28px;
   min-height: 290px;
   padding: 20px;
   border: 1px solid #e8ebed;
@@ -72,17 +80,33 @@
 
 .student-mileage-request-card__fields {
   display: grid;
-  gap: 18px;
+  grid-template-columns: minmax(0, 480px) 220px;
+  gap: 18px 28px;
+}
+
+.student-mileage-request-card__fields .figma-textarea-field {
+  grid-column: 1 / -1;
+}
+
+.student-mileage-request-card__fields .figma-textarea-field textarea {
+  min-height: 72px;
 }
 
 .student-mileage-request-card__submit {
   display: flex;
+  grid-column: 2;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: 12px;
+}
+
+.student-mileage-request-card__submit .figma-button {
+  min-width: 116px;
 }
 
 .student-mileage-history-page {
   display: grid;
+  align-content: start;
   gap: 24px;
 }
 
@@ -90,13 +114,14 @@
   overflow: hidden;
   border: 1px solid #e8ebed;
   border-radius: 14px;
+  background: #ffffff;
 }
 
 .student-mileage-history-table__row {
   display: grid;
-  grid-template-columns: 120px 110px minmax(240px, 1fr) 130px 110px 1fr;
+  grid-template-columns: 120px 110px 360px 130px 110px minmax(160px, 1fr);
   align-items: center;
-  min-height: 56px;
+  height: 56px;
   padding: 0 20px;
   border-top: 1px solid #f0f2f7;
   color: #121726;
@@ -108,9 +133,14 @@
 }
 
 .student-mileage-history-table__row.is-head {
-  min-height: 51px;
+  height: 51px;
   color: #5c667a;
   font-weight: 600;
+}
+
+.student-mileage-history-table__row .figma-status-badge {
+  justify-self: start;
+  min-height: 24px;
 }
 
 .student-mileage-history-table__title {
@@ -135,8 +165,20 @@
   }
 
   .student-mileage-product-grid,
-  .student-mileage-request-card {
+  .student-mileage-request-card,
+  .student-mileage-request-card__fields {
     grid-template-columns: 1fr;
+  }
+
+  .student-mileage-request-card__fields .figma-textarea-field,
+  .student-mileage-request-card__submit {
+    grid-column: auto;
+  }
+
+  .student-mileage-products-page__head,
+  .student-mileage-request-card__submit {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .student-mileage-history-table {

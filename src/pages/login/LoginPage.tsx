@@ -75,7 +75,7 @@ function DemoAccountsHint() {
         <strong>프로토타입 데모 계정</strong>
       </header>
       <div className="demo-hint__grid">
-        <DemoRow badge="성공" detail="아이디: playdata" password="/  비번: 1234" result="→ 대시보드" />
+        <DemoRow badge="성공" detail="아이디: playdata" password="/  비번: 1234" result="→ 온보딩" />
         <DemoRow badge="차단" detail="아이디: disabled" password="/  비번: (아무 값)" result="→ 비활성 계정" />
         <DemoRow badge="서버" detail="아이디: server" password="/  비번: (아무 값)" result="→ 서버 오류" />
         <DemoRow badge="오류" detail="아이디: (그 외)" password="/  비번: (아무 값)" result="→ 아이디·비번 불일치" />

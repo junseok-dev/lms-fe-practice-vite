@@ -49,12 +49,25 @@
 
 .onboarding-logo p,
 .onboarding-top button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
   margin: 0;
   border: 0;
   background: transparent;
   color: #5c6878;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.onboarding-top button::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #29b5b0;
+  opacity: 0.85;
 }
 
 .onboarding-hero {
@@ -103,6 +116,32 @@
   list-style: none;
 }
 
+.onboarding-stepper::before,
+.onboarding-stepper::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  width: 200px;
+  height: 2px;
+  border-radius: 1px;
+  background: #e8eaed;
+}
+
+.onboarding-stepper::before {
+  left: 160px;
+}
+
+.onboarding-stepper::after {
+  right: 160px;
+}
+
+.onboarding-stepper:has(li:nth-child(2).is-active)::before,
+.onboarding-stepper:has(li:nth-child(2).is-complete)::before,
+.onboarding-stepper:has(li:nth-child(3).is-active)::before,
+.onboarding-stepper:has(li:nth-child(3).is-active)::after {
+  background: #29b5b0;
+}
+
 .onboarding-stepper li {
   display: grid;
   justify-items: center;
@@ -148,6 +187,16 @@
   color: #ffffff;
 }
 
+.onboarding-stepper .is-complete {
+  color: #29b5b0;
+}
+
+.onboarding-stepper .is-complete span {
+  border-color: #29b5b0;
+  background: #29b5b0;
+  color: #ffffff;
+}
+
 .onboarding-card {
   position: relative;
   z-index: 1;
@@ -182,21 +231,25 @@
 }
 
 .pledge-field {
+  position: relative;
   display: grid;
   gap: 10px;
 }
 
 .pledge-field span,
-.url-fields label {
+.url-fields label,
+.url-field__label span {
   color: #111827;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
-.pledge-field b {
+.pledge-field b,
+.url-field__label b {
   margin-left: 8px;
   color: #29b5b0;
   font-size: 11px;
+  font-weight: 500;
 }
 
 .pledge-field textarea {
@@ -211,7 +264,9 @@
 }
 
 .pledge-field em {
-  justify-self: end;
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
   color: #9ca3af;
   font-size: 12px;
   font-style: normal;
@@ -232,45 +287,103 @@
 .skill-picker {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  align-content: start;
+  gap: 14px 10px;
+  width: 624px;
+  height: 200px;
+  margin-top: 8px;
+  padding: 20px;
+  border: 1.5px solid #e8eaed;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.skill-field__label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.skill-field__label span {
+  color: #111827;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.skill-field__label b {
+  color: #29b5b0;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 .skill-picker button {
-  min-width: 84px;
-  height: 40px;
-  border: 1px solid #e7eaee;
+  height: 32px;
+  padding: 0 18px;
+  border: 1px solid #e8eaed;
   border-radius: 999px;
   background: #ffffff;
   color: #5c6878;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .skill-picker button.is-selected {
-  border-color: #d2f0ef;
-  background: #e6f7f6;
+  border-color: #29b5b0;
+  background: #e8f7f7;
   color: #29b5b0;
+  font-weight: 600;
+}
+
+.skill-picker p {
+  flex-basis: 100%;
+  margin: 46px 0 0;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 17px;
 }
 
 .url-fields {
   display: grid;
-  gap: 18px;
-  margin-top: 20px;
+  gap: 14px;
+  width: 624px;
+  height: 200px;
+  margin-top: 8px;
+  padding: 18px 20px;
+  border: 1.5px solid #e8eaed;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.url-field__label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 22px;
 }
 
 .url-fields label {
   display: grid;
   gap: 8px;
+  color: #121726;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 17px;
 }
 
 .url-fields input {
-  height: 46px;
-  padding: 0 14px;
-  border: 1px solid #e7eaee;
-  border-radius: 8px;
-  background: #f8fafb;
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+  background: #f8f9fa;
   color: #111827;
+  font-size: 12px;
+}
+
+.url-fields input::placeholder {
+  color: #9ea8b8;
 }
 
 .onboarding-card__actions {
@@ -353,8 +466,17 @@
 }
 
 .onboarding-preview h3 {
-  margin: 4px 0 18px;
+  margin: 4px 0 0;
   font-size: 15px;
+}
+
+.onboarding-preview small {
+  display: block;
+  min-height: 36px;
+  margin: 6px 0 16px;
+  color: #5c6878;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .onboarding-preview span {

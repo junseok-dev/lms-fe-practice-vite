@@ -392,6 +392,182 @@
   color: #5c667a;
 }
 
+.figma-kanban-task-card {
+  display: grid;
+  align-content: start;
+  width: 100%;
+  min-height: 126px;
+  padding: 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.figma-kanban-task-card h3,
+.figma-kanban-task-card p {
+  margin: 0;
+}
+
+.figma-kanban-task-card h3 {
+  color: #121726;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.figma-kanban-task-card p {
+  margin-top: 4px;
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.figma-kanban-task-card__badges {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.figma-workspace-day-cell {
+  display: grid;
+  align-content: start;
+  width: 94px;
+  height: 94px;
+  padding: 8px 10px;
+  border: 1px solid #f0f2f7;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.figma-workspace-day-cell > span {
+  color: #5c667a;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+.figma-workspace-day-cell .figma-status-badge {
+  justify-self: start;
+  min-width: 44px;
+  min-height: 24px;
+  margin-top: 10px;
+}
+
+.figma-document-file-card {
+  display: grid;
+  width: 326px;
+  align-content: start;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.figma-document-file-card div {
+  display: grid;
+  gap: 6px;
+}
+
+.figma-document-file-card h3,
+.figma-document-file-card p {
+  margin: 0;
+}
+
+.figma-document-file-card h3 {
+  height: 22px;
+  color: #121726;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.figma-document-file-card p {
+  height: 18px;
+  color: #9ea8b8;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.figma-document-file-card > span {
+  height: 18px;
+}
+
+.figma-document-file-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.figma-document-file-card .figma-status-badge {
+  min-width: 50px;
+  min-height: 24px;
+}
+
+.figma-document-file-card .figma-button {
+  width: 72px;
+  min-height: 42px;
+  padding: 11px 18px;
+}
+
+.figma-attendance-day {
+  display: grid;
+  align-content: start;
+  width: 144px;
+  height: 66px;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid #eef0f3;
+  background: #ffffff;
+}
+
+.figma-attendance-day span {
+  color: #f25966;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.figma-attendance-day strong {
+  justify-self: start;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.0109em;
+}
+
+.figma-attendance-day:not(.figma-attendance-day--empty) span {
+  color: #363b47;
+}
+
+.figma-attendance-day--present strong {
+  background: #e8f7f7;
+  color: #29b5b0;
+}
+
+.figma-attendance-day--late strong {
+  background: #fff3e0;
+  color: #f59e0a;
+}
+
+.figma-attendance-day--earlyLeave strong {
+  background: #e8f3ff;
+  color: #3b82f6;
+}
+
+.figma-attendance-day--outing strong {
+  background: #f0ebfc;
+  color: #5c4fd9;
+}
+
+.figma-attendance-day--absent strong {
+  background: #fce8eb;
+  color: #ef4444;
+}
+
 .figma-notice-banner {
   display: flex;
   gap: 12px;
@@ -525,6 +701,79 @@
   font-weight: 600;
 }
 
+.figma-wizard-stepper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  margin: 0;
+  padding: 24px 32px;
+  border: 1px solid #e8eaed;
+  border-radius: 14px;
+  background: #ffffff;
+  list-style: none;
+}
+
+.figma-wizard-stepper li {
+  display: flex;
+  position: relative;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  color: #9ea8b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.figma-wizard-stepper li:not(:last-child)::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  margin: 0 16px 0 8px;
+  border-radius: 999px;
+  background: #e8eaed;
+}
+
+.figma-wizard-stepper span {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #f0f2f7;
+  color: #9ea8b8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.figma-wizard-stepper strong {
+  white-space: nowrap;
+}
+
+.figma-wizard-stepper li.is-active {
+  color: #121726;
+  font-weight: 600;
+}
+
+.figma-wizard-stepper li.is-complete {
+  color: #5c667a;
+}
+
+.figma-wizard-stepper li.is-complete::after {
+  background: #29b5b0;
+}
+
+.figma-wizard-stepper li.is-active span {
+  background: #29b5b0;
+  color: #ffffff;
+}
+
+.figma-wizard-stepper li.is-complete span {
+  background: #29b5b0;
+  color: #ffffff;
+}
+
 .figma-marketplace-product-card {
   display: flex;
   min-height: 176px;
@@ -568,19 +817,31 @@
 
 .figma-toast {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: 40px;
   z-index: 50;
   display: flex;
   width: 420px;
   min-height: 54px;
   align-items: center;
+  justify-content: flex-start;
   gap: 12px;
   padding: 17px 20px;
   border: 1px solid #e8eaed;
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.figma-toast--bottom {
+  bottom: 51px;
+}
+
+.figma-toast--top {
+  top: 28px;
+}
+
+.figma-toast--content-top {
+  top: 120px;
 }
 
 .figma-toast span {
@@ -597,8 +858,74 @@
 .figma-toast p {
   margin: 0;
   color: #121726;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.figma-toast button {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #d8dee9;
+  font: inherit;
+  font-size: 18px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.figma-toast--dark {
+  justify-content: space-between;
+  border: 0;
+  background: #121726;
+}
+
+.figma-toast--brand {
+  justify-content: space-between;
+  border: 0;
+  background: #5c4fd9;
+}
+
+.figma-toast--dark span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #29b5b0;
+}
+
+.figma-toast--dark p,
+.figma-toast--brand p {
+  color: #ffffff;
+}
+
+.figma-toast--dark p {
+  font-weight: 500;
+  line-height: 19.5px;
+}
+
+.figma-toast--dark button,
+.figma-toast--brand button {
+  width: auto;
+  color: #c0c5d0;
+}
+
+.figma-toast--dark button {
   font-size: 14px;
   font-weight: 600;
+}
+
+.figma-toast--brand button {
+  width: 20px;
+  height: 24px;
+  color: #d8dee9;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .figma-toast--success span {

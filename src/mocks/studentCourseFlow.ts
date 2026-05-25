@@ -5,7 +5,7 @@ export const courseTabs = [
   { label: '퀴즈', value: 'quizzes', to: '/student/quizzes' },
   { label: '자료실', value: 'materials', to: '/student/course/materials' },
   { label: '과제/실습', value: 'assignments' },
-  { label: '역량 리포트', value: 'report' },
+  { label: '수강 역량 증명서 종합 요약', value: 'report' },
 ]
 
 export const studentMaterials = {
@@ -270,6 +270,11 @@ export const quizResult = {
     ['트랜잭션 / 격리 수준', '60점', 'warning'],
     ['Querydsl & 동적 쿼리', '80점', 'ok'],
   ],
+  actions: {
+    back: '퀴즈 목록으로',
+    secondary: '재응시 (1회 남음)',
+    primary: '나가기',
+  },
   answers: [
     {
       no: 1,
@@ -288,6 +293,37 @@ export const quizResult = {
       myAnswer: '③ READ_UNCOMMITTED',
       answer: '② DEFAULT',
       state: 'wrong',
+    },
+    {
+      no: 3,
+      type: '객관식',
+      title: '영속성 컨텍스트에서 dirty checking이 수행되는 시점으로 가장 적절한 것은?',
+      score: '5 / 5',
+      myAnswer: '③ 트랜잭션 commit 또는 flush 시점',
+      answer: '③ 트랜잭션 commit 또는 flush 시점',
+      state: 'correct',
+    },
+    {
+      no: 4,
+      type: '단답형',
+      title: 'N+1 문제를 완화하기 위해 연관 엔티티를 함께 조회하는 JPQL 키워드를 작성하세요.',
+      score: '채점 대기',
+      myAnswer: 'fetch join',
+      answer: '수동 채점 후 공개',
+      state: 'pending',
+      feedback: {
+        label: '채점 안내',
+        message: '단답형 문항은 강사 수동 채점 후 최종 점수와 정답 해설이 확정됩니다.',
+      },
+    },
+    {
+      no: 5,
+      type: '객관식',
+      title: 'Querydsl에서 동적 조건을 조합할 때 사용할 수 있는 대표 객체는 무엇인가요?',
+      score: '0 / 5',
+      myAnswer: '① EntityManager',
+      answer: '③ BooleanBuilder',
+      state: 'feedback',
     },
   ],
 } as const

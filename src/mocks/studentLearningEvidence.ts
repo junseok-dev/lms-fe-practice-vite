@@ -186,8 +186,8 @@ export const studentCertificateChangesRequested = {
       target: '대상: 점수',
       summary: 'JPA 영속성 컨텍스트 퀴즈를 재응시해 주세요',
       description:
-        '해당 퀴즈 결과가 동료 평균보다 낮게 산출되어 역량 리포트가 갱신되지 않았습니다. 재응시 후 점수가 반영되면 재요청해 주세요.',
-      action: '역량 리포트 이동 →',
+        '해당 퀴즈 결과가 동료 평균보다 낮게 산출되어 수강 역량 증명서 종합 요약이 갱신되지 않았습니다. 재응시 후 점수가 반영되면 재요청해 주세요.',
+      action: '수강 역량 증명서 종합 요약 이동 →',
       to: ROUTES.studentQuizzes,
     },
   ],
@@ -221,7 +221,7 @@ export const studentCertificatePublication = {
   verification: {
     title: '검증 정보',
     description: 'URL 복사는 항상 가능, QR 다운로드는 공개 ON에서만 활성',
-    url: 'https://lms.playdata.io/verify/public-token-preview',
+    url: 'https://verify.playdata.io/v/abc123def456',
     qrHint: '공개 URL 존재 시 QR 다운로드 가능',
     privacy:
       '※ 비공개 상태에서 발급된 QR을 스캔하면 외부 검증 페이지가 "비공개 증명서" 안내만 표시합니다.',

@@ -5,7 +5,7 @@ import { studentProjects } from '../../mocks/studentProjects'
 import './student-projects.css'
 
 // Figma frame: "수강생 — 프로젝트 목록 (/student/projects)"
-// 프로젝트 생성과 워크스페이스 진입 전 목록을 보여주는 페이지입니다.
+// 참여 중인 팀·개인 프로젝트와 인증 상태, 워크스페이스 진입 액션을 보여줍니다.
 export function StudentProjectsPage() {
   return (
     <section className="student-projects" aria-label="프로젝트 목록">
@@ -15,13 +15,13 @@ export function StudentProjectsPage() {
           <span>{studentProjects.summary.count}</span>
         </div>
         <Link className="figma-button figma-button--primary" to={ROUTES.studentProjectsNew}>
-          + 새 프로젝트
+          {studentProjects.summary.action}
         </Link>
       </header>
 
       <div className="student-projects__list">
         {studentProjects.items.map((project) => (
-          <article className="student-project-card" key={project.title}>
+          <article className="student-project-card" key={project.id}>
             <header>
               <div>
                 <h3>{project.title}</h3>
@@ -31,7 +31,7 @@ export function StudentProjectsPage() {
                   </FigmaStatusBadge>
                 ))}
               </div>
-              <Link className="figma-button figma-button--secondary" to={ROUTES.studentProjectWorkspace.replace(':projectId', 'order-api')}>
+              <Link className="figma-button figma-button--secondary" to={ROUTES.studentProjectWorkspace.replace(':projectId', project.id)}>
                 {project.action}
               </Link>
             </header>

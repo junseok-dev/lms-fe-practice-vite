@@ -8,17 +8,19 @@ export function StudentCertificateChangesRequestedPage() {
   return (
     <section className="student-evidence certificate-request" aria-label="보완 요청 상세">
       <section className="request-status-card">
-        <span>{studentCertificateChangesRequested.status.badge}</span>
-        <h2>{studentCertificateChangesRequested.status.title}</h2>
-        <p>{studentCertificateChangesRequested.status.description}</p>
-        <div>
-          {studentCertificateChangesRequested.status.meta.map((item) => (
-            <article key={item.label}>
-              <small>{item.label}</small>
-              <strong>{item.value}</strong>
-            </article>
-          ))}
+        <div className="request-status-card__copy">
+          <span>{studentCertificateChangesRequested.status.badge}</span>
+          <h2>{studentCertificateChangesRequested.status.title}</h2>
+          <p>{studentCertificateChangesRequested.status.description}</p>
         </div>
+        <dl className="request-status-card__meta">
+          {studentCertificateChangesRequested.status.meta.map((item) => (
+            <div key={item.label}>
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="evidence-panel request-reasons">
@@ -28,7 +30,7 @@ export function StudentCertificateChangesRequestedPage() {
         </header>
 
         {studentCertificateChangesRequested.reasons.map((reason) => (
-          <article className="request-reason-card" key={reason.number}>
+          <article className={`request-reason-card request-reason-card--${reason.number}`} key={reason.number}>
             <strong>{reason.number}</strong>
             <div>
               <p>
@@ -50,8 +52,13 @@ export function StudentCertificateChangesRequestedPage() {
         </header>
 
         <div>
-          {studentCertificateChangesRequested.shortcuts.map((shortcut) => (
-            <Link to={shortcut.to} key={shortcut.label}>
+          {studentCertificateChangesRequested.shortcuts.map((shortcut, index) => (
+            <Link
+              className={shortcut.status.includes('없음') ? 'is-complete' : 'is-required'}
+              to={shortcut.to}
+              key={shortcut.label}
+            >
+              <em>{['P', 'S', 'R', 'Pj', 'Pi'][index]}</em>
               <strong>{shortcut.label}</strong>
               <span>{shortcut.status}</span>
               <i>이동 →</i>
@@ -67,10 +74,14 @@ export function StudentCertificateChangesRequestedPage() {
         </header>
         {studentCertificateChangesRequested.checklist.map((item) => (
           <article key={item.title}>
+            <i aria-hidden="true" />
             <span>{item.title}</span>
             <strong>{item.status}</strong>
           </article>
         ))}
+        <button disabled type="button">
+          정식 인증 재요청
+        </button>
       </section>
     </section>
   )

@@ -1,23 +1,27 @@
 import { Link } from 'react-router-dom'
-import { studentCertificate } from '../../mocks/studentLearningEvidence'
+import { FigmaStatusBadge } from '../../components/figma/common'
+import { ROUTES } from '../../constants/routes'
+import { studentCertificatePreview } from '../../mocks/studentCertificatePreview'
 import './student-learning-evidence.css'
 
-// Figma의 "수강생 — 증명서 미리보기 (/student/certificate)" 프레임을 구현하는 페이지입니다.
-// 정식 인증 요청은 동작시키지 않고, 보완 항목과 미리보기 정보를 화면 검토용으로 배치합니다.
+// Figma frame: "수강생 - 증명서 미리보기 (/student/certificate)"
+// 정식 인증 전 미리보기, 보완 항목, 요청 전 체크 상태를 한 화면에서 보여줍니다.
 export function StudentCertificatePage() {
   return (
     <section className="student-evidence student-certificate" aria-label="수강 역량 증명서">
       <section className="certificate-status-card">
-        <span>{studentCertificate.status.badge}</span>
-        <h2>{studentCertificate.status.title}</h2>
-        <p>{studentCertificate.status.description}</p>
-        <small>{studentCertificate.status.updatedAt}</small>
-        <button type="button">{studentCertificate.status.action}</button>
+        <FigmaStatusBadge tone="neutral">{studentCertificatePreview.status.badge}</FigmaStatusBadge>
+        <h2>{studentCertificatePreview.status.title}</h2>
+        <p>{studentCertificatePreview.status.description}</p>
+        <small>{studentCertificatePreview.status.updatedAt}</small>
+        <Link className="figma-button figma-button--primary" to={ROUTES.studentCertificateChangesRequested}>
+          {studentCertificatePreview.status.action}
+        </Link>
       </section>
 
       <h2 className="certificate-issue-title">보완이 필요한 항목 · 3건</h2>
       <div className="certificate-issues">
-        {studentCertificate.issues.map((issue) => (
+        {studentCertificatePreview.issues.map((issue) => (
           <article className={`certificate-issue certificate-issue--${issue.tone}`} key={issue.title}>
             <i />
             <strong>{issue.title}</strong>
@@ -28,7 +32,7 @@ export function StudentCertificatePage() {
       </div>
 
       <nav className="certificate-tabs" aria-label="증명서 섹션">
-        {studentCertificate.tabs.map((tab, index) => (
+        {studentCertificatePreview.tabs.map((tab, index) => (
           <button className={index === 0 ? 'is-active' : undefined} key={tab} type="button">
             {tab}
           </button>
@@ -36,15 +40,15 @@ export function StudentCertificatePage() {
       </nav>
 
       <section className="certificate-preview-card">
-        <p>ENCORE DATA COMPETENCY CERTIFICATE</p>
-        <h2>김수강</h2>
-        <span>백엔드 부트캠프 · 3기 | 교육 기간 2025.11.04 ~ 2026.05.20 | 총 800시간 / 출석 768시간</span>
-        <small>검증 ID · 미발급 (preview)</small>
-        <em>PREVIEW</em>
+        <p>{studentCertificatePreview.certificate.eyebrow}</p>
+        <h2>{studentCertificatePreview.certificate.name}</h2>
+        <span>{studentCertificatePreview.certificate.description}</span>
+        <small>{studentCertificatePreview.certificate.verify}</small>
+        <em>{studentCertificatePreview.certificate.stamp}</em>
       </section>
 
       <div className="certificate-metrics">
-        {studentCertificate.metrics.map((metric) => (
+        {studentCertificatePreview.metrics.map((metric) => (
           <article className="certificate-metric" key={metric.label}>
             <span>{metric.label}</span>
             <strong>
@@ -61,7 +65,7 @@ export function StudentCertificatePage() {
         <section className="evidence-panel skill-axis">
           <header>
             <h2>6축 역량 점수</h2>
-            <p>StudentSkillAxisMart · 0–100</p>
+            <p>StudentSkillAxisMart · 0-100</p>
           </header>
           <div className="skill-radar" aria-hidden="true">
             <span />
@@ -71,7 +75,7 @@ export function StudentCertificatePage() {
             <i />
           </div>
           <div className="skill-list">
-            {studentCertificate.skills.map((skill) => (
+            {studentCertificatePreview.skills.map((skill) => (
               <p key={skill.label}>
                 <span>{skill.label}</span>
                 <strong>{skill.value}</strong>
@@ -85,30 +89,56 @@ export function StudentCertificatePage() {
             <h2>대표 프로젝트·기록</h2>
             <p>강사 인증 완료 · 외부 공개 항목</p>
           </header>
-          {studentCertificate.featured.map((item) => (
+          {studentCertificatePreview.featured.map((item) => (
             <article key={item.title}>
-              <span>{item.kind}</span>
+              <span className={`is-${item.tone}`}>{item.kind}</span>
               <div>
                 <strong>{item.title}</strong>
                 <p>{item.meta}</p>
               </div>
-              <i>›</i>
+              <i>→</i>
             </article>
           ))}
         </section>
       </div>
 
+      <header className="certificate-checklist-title">
+        <h2>{studentCertificatePreview.checklist.title}</h2>
+        <p>{studentCertificatePreview.checklist.description}</p>
+      </header>
       <section className="evidence-panel certificate-checklist">
-        <header>
-          <h2>요청 전 체크</h2>
-          <p>모든 항목이 충족되어야 정식 인증 요청이 가능합니다</p>
-        </header>
-        {studentCertificate.checklist.map((item) => (
-          <article key={item.title}>
-            <span>{item.title}</span>
-            <strong>{item.status}</strong>
+        {studentCertificatePreview.checklist.rows.map((item, index) => (
+          <article className={item.passed ? 'is-passed' : 'is-blocked'} key={item.title}>
+            <span>{item.passed ? '✓' : '×'}</span>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+            </div>
+            <Link
+              to={
+                index === 0
+                  ? ROUTES.studentProfile
+                  : index === 2
+                    ? ROUTES.studentProjects
+                    : index === 3
+                      ? ROUTES.studentCertificatePublication
+                      : ROUTES.studentCertificateChangesRequested
+              }
+            >
+              {item.action}
+            </Link>
           </article>
         ))}
+      </section>
+
+      <section className="certificate-request-summary">
+        <div>
+          <h2>{studentCertificatePreview.summary.title}</h2>
+          <p>{studentCertificatePreview.summary.description}</p>
+        </div>
+        <button className="figma-button figma-button--secondary" disabled type="button">
+          {studentCertificatePreview.summary.action}
+        </button>
       </section>
     </section>
   )

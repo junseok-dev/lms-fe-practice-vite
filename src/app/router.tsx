@@ -38,6 +38,7 @@ import { StudentRecordFormPage } from '../pages/student/StudentRecordFormPage'
 import { StudentRecordsPage } from '../pages/student/StudentRecordsPage'
 import { StudentTroubleshootingFormPage } from '../pages/student/StudentTroubleshootingFormPage'
 import { StudentTroubleshootingPage } from '../pages/student/StudentTroubleshootingPage'
+import { PublicCertificateVerifyPage } from '../pages/verify/PublicCertificateVerifyPage'
 
 // 주소와 페이지 컴포넌트를 연결하는 라우터 설정입니다.
 // Figma의 로그인 흐름과 수강생 화면 흐름을 URL로 직접 확인할 수 있게 만듭니다.
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.forbidden,
     element: <ForbiddenPage />,
+  },
+  {
+    path: ROUTES.publicCertificateVerify,
+    element: <PublicCertificateVerifyPage />,
   },
   {
     path: ROUTES.studentOnboarding,

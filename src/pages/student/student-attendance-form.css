@@ -1,8 +1,14 @@
-/* 출결 폼 작성 화면의 단계형 카드와 모바일 대응 배치를 관리합니다. */
+/* 출결 폼의 데스크톱 카드형 레이아웃과 Figma 모바일 전용 레이아웃을 관리합니다. */
 .student-attendance-form-page {
   display: grid;
   gap: 24px;
   padding: 32px 72px;
+}
+
+.student-attendance-mobile-topbar,
+.student-attendance-student-chip,
+.student-attendance-overwrite-notice {
+  display: none;
 }
 
 .student-attendance-form-summary,
@@ -93,23 +99,33 @@
 
 .student-attendance-type {
   display: grid;
-  gap: 8px;
   min-height: 72px;
+  align-content: start;
+  gap: 10px;
   padding: 14px;
   border: 1px solid #e8eaed;
   border-radius: 10px;
   background: #ffffff;
   color: #9ea8b8;
-  font-size: 11px;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
 }
 
 .student-attendance-type.is-selected {
   border: 2px solid #29b5b0;
   background: #f5fdfc;
+  color: #121726;
+  font-weight: 600;
+}
+
+.student-attendance-type__label {
+  line-height: 1.35;
 }
 
 .student-attendance-timebox,
-.student-attendance-leavebox {
+.student-attendance-leavebox,
+.student-attendance-evidence-box {
   display: grid;
   gap: 10px;
   padding: 16px;
@@ -134,31 +150,36 @@
   font: inherit;
 }
 
-.student-attendance-leavebox__head {
+.student-attendance-leavebox__choice {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
 }
 
-.student-attendance-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.student-attendance-leavebox__choice button {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  background: #ffffff;
   color: #5c667a;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
-.student-attendance-toggle span {
-  width: 40px;
-  height: 22px;
-  border-radius: 999px;
-  background: #e8ebed;
+.student-attendance-leavebox__choice button:first-child {
+  color: #121726;
+  font-weight: 600;
 }
 
 .student-attendance-chip-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+}
+
+.student-attendance-evidence-box strong {
+  color: #121726;
+  font-size: 13px;
 }
 
 .student-attendance-form-actions {
@@ -175,18 +196,258 @@
 
 @media (max-width: 900px) {
   .student-attendance-form-page {
-    padding: 28px 24px;
+    width: min(390px, 100vw);
+    margin: 0 auto;
+    gap: 16px;
+    padding: 20px;
+    background: #ffffff;
   }
 
-  .student-attendance-form-summary__fields,
-  .student-attendance-type-grid,
-  .student-attendance-form-actions,
-  .student-attendance-form-actions__right {
-    align-items: stretch;
-    flex-direction: column;
+  .student-attendance-form-page > .figma-notice-banner {
+    display: none;
+  }
+
+  .student-attendance-mobile-topbar {
+    display: flex;
+    width: 350px;
+    height: 44px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .student-attendance-mobile-topbar a {
+    color: #5c667a;
+    font-size: 28px;
+    line-height: 32px;
+    text-decoration: none;
+  }
+
+  .student-attendance-mobile-topbar div {
+    display: grid;
+    width: 260px;
+    gap: 2px;
+  }
+
+  .student-attendance-mobile-topbar h1,
+  .student-attendance-mobile-topbar p {
+    margin: 0;
+  }
+
+  .student-attendance-mobile-topbar h1 {
+    color: #121726;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .student-attendance-mobile-topbar p {
+    color: #9ea8b8;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .student-attendance-student-chip {
+    display: flex;
+    width: 350px;
+    height: 46px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border-radius: 12px;
+    background: #f5f7fc;
+  }
+
+  .student-attendance-student-chip span {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 14px;
+    background: #5c4fd9;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .student-attendance-student-chip strong {
+    color: #363b47;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .student-attendance-overwrite-notice {
+    display: grid;
+    width: 350px;
+    height: 72px;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #fef3c7;
+  }
+
+  .student-attendance-overwrite-notice strong {
+    color: #d97706;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .student-attendance-overwrite-notice p {
+    margin: 0;
+    color: #5c667a;
+    font-size: 11px;
+    line-height: 16.5px;
+  }
+
+  .student-attendance-form-summary {
+    width: 350px;
+    min-height: 128px;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .student-attendance-form-summary__fields {
+    display: grid;
+    gap: 10px;
+  }
+
+  .student-attendance-form-summary__field {
+    gap: 4px;
+  }
+
+  .student-attendance-form-summary__field span {
+    color: #121726;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .student-attendance-form-summary__field strong {
+    min-width: 0;
+    height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: #121726;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  .student-attendance-form-summary__field:nth-child(2),
+  .student-attendance-form-summary > p {
+    display: none;
+  }
+
+  .student-attendance-form-summary__field:nth-child(3) strong {
+    color: #9ea8b8;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16.5px;
+  }
+
+  .student-attendance-step {
+    width: 350px;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .student-attendance-step__title h2 {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .student-attendance-step__title .figma-status-badge {
+    min-height: 22px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
   }
 
   .student-attendance-type-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .student-attendance-type {
+    width: 322px;
+    min-height: 36px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .student-attendance-timebox,
+  .student-attendance-leavebox,
+  .student-attendance-evidence-box {
+    padding: 0;
+    background: transparent;
+  }
+
+  .student-attendance-timebox label {
+    max-width: none;
+    gap: 8px;
+    color: #5c667a;
+    font-size: 12px;
+  }
+
+  .student-attendance-timebox input {
+    height: 40px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+
+  .student-attendance-timebox p,
+  .student-attendance-leavebox p,
+  .student-attendance-evidence-box {
+    display: none;
+  }
+
+  .student-attendance-leavebox__choice {
+    gap: 14px;
+  }
+
+  .student-attendance-chip-row {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .student-attendance-chip-row .figma-chip {
+    height: 34px;
+    padding: 8px 14px;
+    border-radius: 8px;
+  }
+
+  .student-attendance-step--evidence {
+    display: none;
+  }
+
+  .student-attendance-step .figma-textarea textarea {
+    min-height: 86px;
+    border-radius: 5px;
+  }
+
+  .student-attendance-form-actions {
+    width: 350px;
+    gap: 16px;
+  }
+
+  .student-attendance-form-actions > .figma-button,
+  .student-attendance-form-actions__right,
+  .student-attendance-form-actions__right .figma-button {
+    flex: 1;
+    width: auto;
+  }
+
+  .student-attendance-form-actions > .figma-button,
+  .student-attendance-form-actions__right .figma-button {
+    height: 46px;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .student-attendance-form-actions__right p {
+    display: none;
   }
 }

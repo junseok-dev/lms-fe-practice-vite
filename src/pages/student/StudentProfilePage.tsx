@@ -3,7 +3,7 @@ import { FigmaButton, FigmaInputField } from '../../components/figma/common'
 import { studentProfile } from '../../mocks/studentProfile'
 import './student-profile.css'
 
-// Figma의 "수강생 — 마이 프로필 (/student/profile)" 프레임을 구현할 페이지입니다.
+// Figma의 "수강생 - 마이 프로필 (/student/profile)" 프레임을 구현할 페이지입니다.
 export function StudentProfilePage() {
   return (
     <div className="student-profile">

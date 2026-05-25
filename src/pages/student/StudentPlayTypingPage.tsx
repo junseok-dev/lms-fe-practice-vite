@@ -1,4 +1,6 @@
-import { FigmaButton, FigmaStatusBadge } from '../../components/figma/common'
+import { Link } from 'react-router-dom'
+import { FigmaButton, FigmaKpiCard, FigmaStatusBadge } from '../../components/figma/common'
+import { ROUTES } from '../../constants/routes'
 import { typingInfo, typingKpis, typingPrompt, typingPrompts } from '../../mocks/studentPlayTyping'
 import './student-play-typing.css'
 
@@ -9,11 +11,14 @@ export function StudentPlayTypingPage() {
     <section className="student-play-typing-page">
       <div className="student-play-typing-kpis">
         {typingKpis.map((kpi) => (
-          <article className="student-play-typing-kpi" key={kpi.label}>
-            <span>{kpi.label}</span>
-            <strong>{kpi.value}</strong>
-            <small>{kpi.helper}</small>
-          </article>
+          <FigmaKpiCard
+            helper={kpi.helper}
+            key={kpi.label}
+            label={kpi.label}
+            tone="positive"
+            unit={kpi.unit}
+            value={kpi.value}
+          />
         ))}
       </div>
 
@@ -30,7 +35,9 @@ export function StudentPlayTypingPage() {
           <div className="student-play-typing-area">제시문을 보고 여기에 입력합니다...</div>
           <footer className="student-play-typing-actions">
             <FigmaButton kind="secondary">일시정지</FigmaButton>
-            <FigmaButton kind="secondary">저장하지 않고 나가기</FigmaButton>
+            <Link className="figma-button figma-button--secondary" to={ROUTES.studentPlay}>
+              저장하지 않고 나가기
+            </Link>
             <FigmaButton>결과 제출</FigmaButton>
           </footer>
         </section>

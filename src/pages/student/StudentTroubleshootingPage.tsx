@@ -5,7 +5,7 @@ import { studentTroubleshootingCases } from '../../mocks/studentTroubleshooting'
 import './student-troubleshooting.css'
 
 // Figma frame: "수강생 — 트러블슈팅 사례 목록 (/student/troubleshooting)"
-// 새 사례 작성과 변경 제안 화면으로 이동할 수 있는 사례 목록 페이지입니다.
+// 문제 해결 사례 목록과 변경 제안 화면으로 이어지는 진입점을 보여줍니다.
 export function StudentTroubleshootingPage() {
   return (
     <section className="student-troubleshooting" aria-label="트러블슈팅 사례 목록">
@@ -15,13 +15,13 @@ export function StudentTroubleshootingPage() {
           <span>{studentTroubleshootingCases.summary.count}</span>
         </div>
         <Link className="figma-button figma-button--primary" to={ROUTES.studentTroubleshootingNew}>
-          + 새 사례 작성
+          {studentTroubleshootingCases.summary.action}
         </Link>
       </header>
 
       <div className="student-troubleshooting__list">
         {studentTroubleshootingCases.items.map((caseItem) => (
-          <article className="student-troubleshooting-card" key={caseItem.title}>
+          <article className="student-troubleshooting-card" key={caseItem.id}>
             <header>
               <div>
                 <h3>{caseItem.title}</h3>
@@ -33,7 +33,7 @@ export function StudentTroubleshootingPage() {
               </div>
               <Link
                 className="figma-button figma-button--secondary"
-                to={ROUTES.studentTroubleshootingChangeRequest.replace(':id', 'jpa-n-plus-one')}
+                to={ROUTES.studentTroubleshootingChangeRequest.replace(':id', caseItem.id)}
               >
                 {caseItem.action}
               </Link>

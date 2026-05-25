@@ -9,7 +9,7 @@ type FigmaHeaderProps = {
 }
 
 // Figma component: "공통 - Header / Base"
-// 역할별 화면에서 제목, 설명, 검색, 알림, 프로필 진입을 같은 구조로 맞추기 위한 공통 헤더입니다.
+// 역할별 화면에서 제목, 설명, 검색, 알림, 프로필 진입을 같은 구조로 맞추는 공통 헤더입니다.
 export function FigmaHeader({ avatarLabel, description, title }: FigmaHeaderProps) {
   return (
     <header className="figma-header">

@@ -1,0 +1,508 @@
+.verify-page,
+.verify-public-page {
+  min-height: 100svh;
+  background: #ffffff;
+  color: #121726;
+}
+
+.verify-brand {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.verify-brand strong {
+  color: #5c4fd9;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.verify-brand span {
+  color: #29b5b0;
+}
+
+.verify-brand em {
+  color: #9ca3b0;
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.verify-brand--compact {
+  display: block;
+}
+
+.verify-brand--compact strong {
+  font-size: 22px;
+}
+
+.verify-page--loading {
+  position: relative;
+  min-height: 720px;
+}
+
+.verify-page--loading > header {
+  position: absolute;
+  left: 40px;
+  top: 28px;
+}
+
+.verify-page--loading h1,
+.verify-page--loading p {
+  margin: 0;
+}
+
+.verify-page--loading h1 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.verify-page--loading > header p {
+  margin-top: 6px;
+  color: #5c6978;
+  font-size: 12px;
+}
+
+.verify-loading-card {
+  position: absolute;
+  left: 50%;
+  top: 152px;
+  display: grid;
+  width: 520px;
+  justify-items: center;
+  gap: 20px;
+  padding: 40px;
+  border: 1px solid #e8ebed;
+  border-radius: 14px;
+  background: #ffffff;
+  transform: translateX(-50%);
+}
+
+.verify-spinner {
+  width: 56px;
+  height: 56px;
+  border: 4px solid #e8f7f7;
+  border-top-color: #29b5b0;
+  border-radius: 999px;
+}
+
+.verify-loading-card h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.verify-loading-card div:not(.verify-brand, .verify-spinner) {
+  display: grid;
+  width: 440px;
+  justify-items: center;
+  gap: 4px;
+}
+
+.verify-footer-note {
+  margin: 0;
+  color: #9ca3b0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.verify-page--center {
+  display: grid;
+  min-height: 741px;
+  place-items: start center;
+  padding: 80px 0;
+}
+
+.verify-state-card,
+.verify-private-card {
+  display: grid;
+  justify-items: center;
+  border: 1px solid #e8ebed;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.verify-state-card {
+  width: 520px;
+  gap: 24px;
+  padding: 40px;
+}
+
+.verify-state-card__icon {
+  display: grid;
+  width: 96px;
+  height: 96px;
+  place-items: center;
+  border: 2px solid #f04545;
+  border-radius: 48px;
+  background: #ffe3e3;
+  color: #f04545;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.verify-state-card header {
+  display: grid;
+  width: 440px;
+  justify-items: center;
+  gap: 10px;
+}
+
+.verify-state-card h1,
+.verify-private-card h1 {
+  margin: 0;
+  color: #121726;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+}
+
+.verify-state-card p,
+.verify-private-card p {
+  margin: 0;
+  color: #5c6978;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.verify-state-card__actions {
+  display: grid;
+  width: 440px;
+  gap: 10px;
+}
+
+.verify-state-card__actions .figma-button {
+  width: 440px;
+  height: 42px;
+  justify-content: center;
+}
+
+.verify-page--private {
+  min-height: 795px;
+  padding: 60px 0;
+}
+
+.verify-private-card {
+  width: 560px;
+  gap: 20px;
+  padding: 40px;
+}
+
+.verify-private-card > em {
+  color: #9ca3b0;
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+.verify-private-card__icon {
+  position: relative;
+  display: grid;
+  width: 80px;
+  height: 80px;
+  place-items: center;
+  border: 1.5px solid #f59e0a;
+  border-radius: 40px;
+  background: #fff2c7;
+  font-size: 36px;
+}
+
+.verify-private-card__icon::before {
+  position: absolute;
+  top: 24px;
+  width: 20px;
+  height: 18px;
+  border: 4px solid #f59e0a;
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  content: '';
+}
+
+.verify-private-card__icon::after {
+  position: absolute;
+  top: 40px;
+  width: 34px;
+  height: 24px;
+  border-radius: 7px;
+  background: #f59e0a;
+  content: '';
+}
+
+.verify-private-card h1 {
+  width: 480px;
+  font-size: 26px;
+  line-height: 34px;
+}
+
+.verify-private-card__copy {
+  display: grid;
+  justify-items: center;
+}
+
+.verify-private-card dl {
+  display: grid;
+  width: 480px;
+  gap: 14px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #e8ebed;
+  border-radius: 10px;
+  background: #f0f2f5;
+}
+
+.verify-private-card dl div {
+  display: flex;
+  min-height: 16px;
+  align-items: center;
+  gap: 12px;
+}
+
+.verify-private-card dt {
+  width: 96px;
+  color: #9ca3b0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.verify-private-card dd {
+  margin: 0;
+  color: #121726;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.verify-private-card .figma-button {
+  height: 42px;
+  justify-content: center;
+}
+
+.verify-public-page {
+  min-height: 1316px;
+}
+
+.verify-public-column {
+  display: grid;
+  width: 1120px;
+  gap: 24px;
+  margin-left: 160px;
+  padding: 48px 0 64px;
+}
+
+.verify-public-card {
+  border: 1px solid #e8ebed;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.verify-public-header {
+  display: grid;
+  gap: 16px;
+  padding: 24px 32px;
+}
+
+.verify-public-header > div {
+  display: flex;
+  height: 27px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verify-public-header .figma-status-badge {
+  background: #e8f7f7;
+  color: #29b5b0;
+}
+
+.verify-public-header dl {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #f0f2f5;
+}
+
+.verify-public-header dl div {
+  display: flex;
+  gap: 8px;
+}
+
+.verify-public-header dt,
+.verify-public-core p,
+.verify-public-competencies span,
+.verify-public-info span {
+  color: #5c6978;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.verify-public-header dd {
+  margin: 0;
+  color: #121726;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.verify-public-core,
+.verify-public-evidence,
+.verify-public-info {
+  display: grid;
+  gap: 20px;
+  padding: 28px 32px;
+}
+
+.verify-public-card h2,
+.verify-public-card h3,
+.verify-public-card p {
+  margin: 0;
+}
+
+.verify-public-card h2 {
+  color: #121726;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.verify-public-core > strong {
+  color: #121726;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.verify-public-chip-row {
+  display: flex;
+  gap: 8px;
+}
+
+.verify-public-core hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: #f0f2f5;
+}
+
+.verify-public-competencies,
+.verify-public-evidence > div,
+.verify-public-info > div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.verify-public-competencies article,
+.verify-public-info article {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f0f2f5;
+}
+
+.verify-public-competencies strong {
+  color: #29b5b0;
+  font-size: 24px;
+}
+
+.verify-public-evidence header {
+  display: grid;
+  gap: 4px;
+}
+
+.verify-public-evidence header p {
+  color: #5c6978;
+  font-size: 12px;
+}
+
+.verify-public-evidence > div {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.verify-public-evidence article {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #e8ebed;
+  border-radius: 12px;
+}
+
+.verify-public-evidence h3 {
+  color: #121726;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.verify-public-evidence article p,
+.verify-public-info p {
+  color: #5c6978;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.verify-public-evidence small {
+  color: #9ca3b0;
+  font-size: 11px;
+}
+
+.verify-public-info > div {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.verify-public-info code {
+  color: #121726;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .verify-page--loading,
+  .verify-page--center,
+  .verify-page--private,
+  .verify-public-page {
+    min-height: 100svh;
+    padding: 24px;
+  }
+
+  .verify-page--loading > header,
+  .verify-loading-card {
+    position: static;
+    transform: none;
+  }
+
+  .verify-page--loading {
+    display: grid;
+    gap: 32px;
+    align-content: start;
+  }
+
+  .verify-loading-card,
+  .verify-state-card,
+  .verify-private-card,
+  .verify-state-card header,
+  .verify-state-card__actions,
+  .verify-state-card__actions .figma-button,
+  .verify-private-card h1,
+  .verify-private-card dl,
+  .verify-loading-card div:not(.verify-brand, .verify-spinner) {
+    width: 100%;
+  }
+
+  .verify-public-column {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .verify-public-header dl,
+  .verify-public-competencies,
+  .verify-public-evidence > div,
+  .verify-public-info > div {
+    grid-template-columns: 1fr;
+  }
+}

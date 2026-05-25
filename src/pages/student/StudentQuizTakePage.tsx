@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ROUTES } from '../../constants/routes'
 import { quizTake } from '../../mocks/studentCourseFlow'
 import './student-quiz-take.css'
 
@@ -29,7 +30,7 @@ export function StudentQuizTakePage() {
             진행률
             <strong>{quizTake.answered}</strong>
           </p>
-          <Link to="/student/quizzes/jpa-persistence/result">제출하기</Link>
+          <Link to={ROUTES.studentQuizResult.replace(':quizId', 'jpa-persistence')}>제출하기</Link>
         </div>
       </header>
 
@@ -98,7 +99,7 @@ export function StudentQuizTakePage() {
       </main>
 
       <footer className="quiz-take-bottom">
-        <Link to="/student/quizzes">← 나가기</Link>
+        <Link to={ROUTES.studentQuizzes}>← 나가기</Link>
         <p>
           <span />
           임시 저장됨 · 12초 전

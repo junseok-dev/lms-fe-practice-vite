@@ -15,8 +15,8 @@ export type FigmaQuizTableRowProps = {
   title: string
 }
 
-// Figma의 "공통 - Quiz Table Row / Variants"를 코드로 옮긴 행 컴포넌트입니다.
-// 퀴즈 목록처럼 같은 컬럼 구조를 반복하는 화면에서 행 단위 UI를 재사용합니다.
+// Figma component: "공통 - Quiz Table Row / Variants"
+// 퀴즈 목록처럼 같은 컬럼 구조를 반복하는 화면에서 한 행 단위 UI를 재사용합니다.
 export function FigmaQuizTableRow({
   action,
   actionTo,

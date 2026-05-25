@@ -4,8 +4,8 @@ import { StudentSidebar } from '../features/student/components/StudentSidebar'
 import { ROUTES } from '../constants/routes'
 import './student-layout.css'
 
-// 수강생 페이지들이 공통으로 공유하는 화면 틀입니다.
-// Header와 Sidebar는 고정하고, Outlet 위치에 현재 라우트의 페이지가 들어옵니다.
+// 수강생 페이지들이 공통으로 공유하는 화면 타입입니다.
+// Header와 Sidebar를 고정하고, Outlet 위치에 현재 라우트의 페이지가 들어옵니다.
 export function StudentLayout() {
   const location = useLocation()
   const isProfile = location.pathname === ROUTES.studentProfile
@@ -48,6 +48,7 @@ export function StudentLayout() {
     location.pathname === ROUTES.studentPeerEvaluations ||
     location.pathname === ROUTES.studentPeerTag ||
     location.pathname === ROUTES.studentPeerReputation
+  const isAttendanceForm = location.pathname === ROUTES.studentAttendanceForm
   const contentClassName = [
     'student-layout__content',
     isProfile ? 'student-layout__content--profile' : '',
@@ -59,6 +60,7 @@ export function StudentLayout() {
     isMileageArea ? 'student-layout__content--mileage' : '',
     isPlayArea ? 'student-layout__content--play' : '',
     isFigmaWorkflowPage ? 'student-layout__content--figma-workflow' : '',
+    isAttendanceForm ? 'student-layout__content--attendance-form' : '',
   ]
     .filter(Boolean)
     .join(' ')

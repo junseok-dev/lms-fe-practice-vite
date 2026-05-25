@@ -25,8 +25,6 @@ export function AuthRoutePage() {
       <div className="auth-route-orb auth-route-orb--top" />
       <div className="auth-route-orb auth-route-orb--bottom" />
 
-      <div className="auth-route-avatar" aria-hidden="true">J</div>
-
       <section className="auth-route-content" aria-live="polite">
         <div className="auth-route-logo">
           <strong>

@@ -35,7 +35,7 @@ export const studentAssignments: StudentAssignment[] = [
     scoreLabel: '배점 30점',
     statusLabel: '제출 완료',
     statusTone: 'ok',
-    actionLabel: '수정 제출',
+    actionLabel: '제출 보기·수정',
     actionKind: 'secondary',
   },
   {
@@ -55,7 +55,7 @@ export const studentAssignments: StudentAssignment[] = [
     title: 'Docker 컨테이너 배포 실습',
     category: '인프라',
     dueLabel: '마감 D-1',
-    scoreLabel: '완료 확인제',
+    scoreLabel: '완료 확인형',
     statusLabel: '미제출',
     statusTone: 'neutral',
     actionLabel: '제출하기',
@@ -66,7 +66,7 @@ export const studentAssignments: StudentAssignment[] = [
     title: '트랜잭션 격리 수준 정리',
     category: '백엔드 심화',
     dueLabel: '마감 5/7 종료',
-    scoreLabel: '완료 확인제',
+    scoreLabel: '완료 확인형',
     statusLabel: '검토 완료',
     statusTone: 'info',
     actionLabel: '피드백 보기',
@@ -84,7 +84,7 @@ export const assignmentDetail = {
   badges: [
     { label: '백엔드', tone: 'neutral' as const },
     { label: 'D-2', tone: 'warning' as const },
-    { label: '점수제 100점', tone: 'purple' as const },
+    { label: '점수형 100점', tone: 'purple' as const },
   ],
   body: '구현 범위, 실행 방법, 설계 의도를 작성합니다.',
   url: 'https://github.com/lee/jpa-mapping-practice/pull/12',
@@ -92,6 +92,6 @@ export const assignmentDetail = {
   review: {
     status: '검토 완료',
     score: '점수 88 / 100',
-    feedback: '연관관계 방향 선택 근거가 명확합니다. 다만 댓글 삭제 정책의 cascade 범위는 한 번 더 분리해 주세요.',
+    feedback: '연관관계 방향 선택 근거가 명확합니다. 다만 댓글 삭제 정책과 cascade 범위는 한 번 더 분리해 주세요.',
   },
 }
