@@ -14,22 +14,24 @@ index.html
 
 ## 폴더 기준
 
-- `app`: 앱 진입점, 라우터, App 수준 스타일을 둡니다.
-- `pages`: URL과 직접 연결되는 페이지 컴포넌트를 둡니다.
-- `layouts`: 로그인 전/후, 역할별 화면처럼 여러 페이지가 공유하는 큰 틀을 둡니다.
-- `features`: `auth`, `student`처럼 업무 단위 기능을 둡니다.
-- `components/figma/common`: Figma에서 `공통 - ...` 컴포넌트로 확인된 UI만 둡니다.
-- `components/candidates`: 반복 가능성은 있지만 아직 Figma 공통으로 확정되지 않은 UI 후보를 문서로 관리합니다.
-- `mocks`: API 없이 화면을 먼저 구현하기 위한 고정 데이터를 둡니다.
-- `constants`: 라우트, 역할 등 여러 곳에서 공유하는 고정 값을 둡니다.
-- `types`: 여러 기능에서 공유하는 타입을 둡니다.
-- `services`: API 클라이언트와 서버 통신 공통 코드를 둘 자리입니다.
-- `hooks`: 여러 페이지에서 재사용하는 React 훅을 둡니다.
-- `styles`: 전역 스타일과 디자인 토큰을 둡니다.
+- `app`: 앱 진입점과 라우터를 관리합니다.
+- `layouts`: 로그인 전/후, 역할별 화면처럼 여러 페이지가 공유하는 큰 화면 구조를 관리합니다.
+- `pages`: URL과 직접 연결되는 화면을 관리합니다. 각 페이지는 화면 조립과 라우팅 기준 역할에 집중합니다.
+- `features`: 로그인, 수강생, 강사, 멘토, 운영자처럼 업무 단위 기능을 관리합니다.
+- `components/common`: 여러 화면에서 반복 사용되는 공통 UI를 관리합니다.
+- `components/candidates`: 반복 가능성은 있지만 아직 공통으로 확정되지 않은 UI 후보를 문서로 관리합니다.
+- `mocks`: 백엔드 API가 완성되기 전에도 화면 개발을 진행할 수 있게 하는 임시 데이터를 관리합니다.
+- `constants`: 라우트와 상태값처럼 여러 곳에서 공유하는 값을 관리합니다.
+- `types`: 여러 화면과 기능에서 공유하는 타입을 관리합니다.
+- `services`: API 요청, 인증 헤더, 공통 에러 처리 같은 서버 통신 공통 코드를 관리합니다.
+- `hooks`: 여러 페이지에서 재사용하는 React 훅을 관리합니다.
+- `styles`: 전역 스타일과 디자인 토큰을 관리합니다.
 
-## Figma 공통 컴포넌트
+## 공통 컴포넌트
 
-Figma에서 실제 공통 컴포넌트로 확인된 것만 `src/components/figma/common`에 구현합니다.
+실제 프로젝트에서는 Figma라는 도구 이름을 폴더 구조에 강하게 남기기보다, 역할 중심으로 공통 UI를 `src/components/common`에 정리합니다.
+
+현재 `src/components/figma/common`에는 Figma 시안의 `공통 - ...` 컴포넌트를 재현한 기존 컴포넌트가 남아 있습니다.
 
 ```text
 공통 - Header / Base                    -> FigmaHeader
@@ -52,7 +54,9 @@ Figma에서 실제 공통 컴포넌트로 확인된 것만 `src/components/figma
 공통 - Document File Card / Component   -> FigmaDocumentFileCard
 ```
 
-공통인지 애매한 반복 UI는 바로 승격하지 않습니다. 먼저 `src/components/candidates/README.md`에 후보로 남기고, Figma에서 공통 컴포넌트로 확인되거나 2개 이상 화면에서 같은 규칙으로 반복될 때 승격을 검토합니다.
+앞으로 새 공통 UI는 `src/components/common`에 만들고, 기존 `FigmaButton`, `FigmaChip`, `FigmaStatusBadge` 같은 컴포넌트는 필요할 때 `Button`, `Chip`, `Badge`처럼 역할 중심 이름으로 옮깁니다.
+
+공통인지 애매한 반복 UI는 바로 승격하지 않습니다. 먼저 `src/components/candidates/README.md`에 후보로 남기고, 2개 이상 화면에서 같은 규칙으로 반복될 때 승격을 검토합니다.
 
 ## 수강생 라우트
 
@@ -128,7 +132,7 @@ Figma에서 실제 공통 컴포넌트로 확인된 것만 `src/components/figma
 
 1. Figma node를 MCP로 확인한 뒤 현재 컴포넌트와 CSS를 비교합니다.
 2. 라우팅만 추가하고 끝내지 말고 실제 화면이 Figma와 최대한 동일하게 보이도록 맞춥니다.
-3. Header, Sidebar, Button, Chip 등 Figma 공통으로 확인된 UI는 `components/figma/common`을 사용합니다.
+3. Header, Sidebar, Button, Chip 같은 반복 UI는 우선 `components/common` 기준으로 정리합니다. 기존 Figma 재현 컴포넌트를 사용할 때도 장기적으로는 역할 중심 이름으로 이전할 수 있게 작성합니다.
 4. 페이지 전용 카드, 표, 차트, 미리보기 등은 해당 페이지 CSS에 두고 공통 후보로만 기록합니다.
 5. Figma 협업/채팅 아바타처럼 디자인 툴 UI에 해당하는 요소는 앱 UI로 구현하지 않습니다.
 6. 한 화면을 수정한 뒤 `docs/figma-student-page-audit.md`의 상태와 메모를 갱신합니다.

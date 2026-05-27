@@ -82,28 +82,43 @@ ESLint로 코드 스타일과 기본 오류를 검사합니다.
 
 ## 폴더 구조
 
+실제 프로젝트에서는 Figma라는 도구 이름을 폴더 구조에 강하게 남기기보다, 역할 중심으로 구조를 정리합니다.
+
 ```text
 src/
-  app/              앱 진입점, 라우터, 전역 App 스타일
-  components/       여러 화면에서 재사용하는 UI
-    figma/common/   Figma에서 공통 컴포넌트로 확인된 UI
+  app/              앱 진입점, 라우터
+  layouts/          역할별 공통 레이아웃
+  pages/            URL과 직접 연결되는 페이지
+  features/         역할/도메인별 기능
+  components/
+    common/         여러 화면에서 재사용하는 공통 UI
     candidates/     공통 승격 전 후보 문서
-  constants/        라우트, 역할 같은 고정 값
-  features/         auth, student 등 업무 단위 기능
-  hooks/            재사용 훅
-  layouts/          인증/역할/수강생 등 큰 레이아웃
-  mocks/            API 전 화면 구현용 mock 데이터
-  pages/            URL과 직접 연결되는 페이지 컴포넌트
-  services/         API 클라이언트 자리
-  styles/           전역 스타일과 토큰
+  mocks/            API 전 화면 구현용 데이터
+  constants/        라우트, 고정 값
   types/            공통 타입
+  services/         API 클라이언트
+  hooks/            재사용 훅
+  styles/           전역 스타일과 토큰
 ```
+
+## 폴더별 역할
+
+- `app`: 앱 진입점과 라우터를 관리합니다.
+- `layouts`: 로그인 전/후, 역할별 화면처럼 여러 페이지가 공유하는 큰 화면 구조를 관리합니다.
+- `pages`: URL과 직접 연결되는 화면을 관리합니다. 각 페이지는 화면 조립과 라우팅 기준 역할에 집중합니다.
+- `features`: 로그인, 수강생, 강사, 멘토, 운영자처럼 업무 단위 기능을 관리합니다.
+- `components/common`: 여러 화면에서 반복 사용되는 공통 UI를 관리합니다.
+- `mocks`: 백엔드 API가 완성되기 전에도 화면 개발을 진행할 수 있게 하는 임시 데이터를 관리합니다.
+- `constants`: 라우트와 상태값처럼 여러 곳에서 공유하는 값을 관리합니다.
+- `types`: 여러 화면과 기능에서 공유하는 타입을 관리합니다.
+- `services`: API 요청, 인증 헤더, 공통 에러 처리 같은 서버 통신 공통 코드를 관리합니다.
 
 ## 구현 원칙
 
 - URL과 직접 연결되는 화면은 `src/pages`에 둡니다.
 - 역할별 업무 로직은 `src/features`에 둡니다.
-- Figma에서 `공통 - ...` 컴포넌트로 확인된 UI만 `src/components/figma/common`에 둡니다.
+- 여러 화면에서 재사용하는 공통 UI는 `src/components/common`에 둡니다.
+- 기존 `src/components/figma/common` 컴포넌트는 Figma 시안 재현을 위해 만든 컴포넌트이며, 장기적으로는 역할 중심의 `src/components/common`으로 정리합니다.
 - 반복되지만 공통 여부가 애매한 UI는 바로 공통화하지 않고 `src/components/candidates/README.md`에 후보로 기록합니다.
 - 새 폴더나 새 파일을 만들면 역할을 알 수 있도록 README 또는 짧은 주석을 남깁니다.
 - 수강생 화면은 Figma node를 MCP로 확인한 뒤 실제 페이지 UI를 맞춥니다. 라우팅만 연결하고 끝내지 않습니다.
